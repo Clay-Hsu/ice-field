@@ -193,6 +193,16 @@
     <!-- Main（空著，自行填入內容） -->
     <main>
       <!-- 在這裡放你的內容 -->
+      <!-- 點擊的圖塊 -->
+<div onclick="document.getElementById('myModal').showModal()" style="cursor:pointer; background: #ddd; padding: 20px;">
+  點擊我顯示小窗口
+</div>
+
+<!-- 彈出的小窗口 -->
+<dialog id="myModal" style="border-radius: 8px; padding: 20px;">
+  <p>這是小窗口的內容！</p>
+  <button onclick="document.getElementById('myModal').close()">關閉</button>
+</dialog>
     </main>
 
   </div>
