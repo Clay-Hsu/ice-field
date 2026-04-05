@@ -137,7 +137,7 @@
       left: 0;
       top: 0;
       margin: 0;
-      width: 360px;
+      width: 33vw;
       height: 100vh;
       background: var(--surface);
       border: none;
@@ -274,22 +274,17 @@
           <li><a href="#">RSS</a></li>
         </ul>
       </div>
+      <div class="nav-group">
+        <span class="nav-label">媒體</span>
+        <ul class="nav-items">
+          <li><a href="#" id="openMedia">YouTube / Spotify</a></li>
+        </ul>
+      </div>
     </nav>
 
     <!-- Main（空著，自行填入內容） -->
     <main>
       <!-- 在這裡放你的內容 -->
-
-      <!-- 範例：點擊觸發 dialog -->
-      <div onclick="document.getElementById('myModal').showModal()"
-           style="cursor:pointer; display:inline-block; padding: 8px 18px;
-                  border: 1px solid var(--border); border-radius: 6px;
-                  font-size: 13px; color: var(--muted);
-                  transition: border-color 0.15s, color 0.15s;"
-           onmouseover="this.style.borderColor='var(--border-h)';this.style.color='var(--text)'"
-           onmouseout="this.style.borderColor='var(--border)';this.style.color='var(--muted)'">
-        點擊我顯示小窗口
-      </div>
 
       <!-- Dialog：按下才載入 embed，關閉時暫停 -->
       <dialog id="myModal">
@@ -317,7 +312,8 @@
         const ytFrame = document.getElementById('ytFrame');
         const spFrame = document.getElementById('spFrame');
 
-        document.querySelector('[onclick]').addEventListener('click', () => {
+        document.getElementById('openMedia').addEventListener('click', (e) => {
+          e.preventDefault();
           if (!ytFrame.src) ytFrame.src = ytFrame.dataset.src;
           if (!spFrame.src) spFrame.src = spFrame.dataset.src;
           modal.showModal();
@@ -328,8 +324,6 @@
           ytFrame.src = '';
           spFrame.src = '';
         });
-
-        document.querySelector('[onclick]').removeAttribute('onclick');
       </script>
 
     </main>
