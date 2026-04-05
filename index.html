@@ -131,6 +131,88 @@
       padding-left: 2.5rem;
     }
 
+    /* ── Dialog ── */
+    dialog {
+      position: fixed;
+      left: 0;
+      top: 0;
+      margin: 0;
+      width: 360px;
+      height: 100vh;
+      background: var(--surface);
+      border: none;
+      border-right: 1px solid var(--border);
+      border-radius: 0;
+      padding: 0;
+      color: var(--text);
+      box-shadow: 4px 0 32px rgba(0,0,0,0.5);
+      display: flex;
+      flex-direction: column;
+    }
+
+    dialog::backdrop {
+      background: rgba(0,0,0,0.45);
+    }
+
+    .dialog-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem 1.25rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .dialog-title {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text);
+    }
+
+    .dialog-close {
+      background: none;
+      border: none;
+      color: var(--muted);
+      cursor: pointer;
+      font-size: 18px;
+      line-height: 1;
+      padding: 2px 4px;
+      border-radius: 4px;
+      transition: color 0.12s, background 0.12s;
+    }
+
+    .dialog-close:hover {
+      color: var(--text);
+      background: var(--border);
+    }
+
+    .dialog-body {
+      padding: 1.25rem;
+      font-size: 14px;
+      color: #a8a6a1;
+      line-height: 1.7;
+      flex: 1;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+
+    .embed-label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 0.5rem;
+    }
+
+    .embed-wrap iframe {
+      width: 100%;
+      border-radius: 8px;
+      border: none;
+      display: block;
+    }
+
     /* ── Footer ── */
     footer {
       border-top: 1px solid var(--border);
@@ -193,16 +275,48 @@
     <!-- Main（空著，自行填入內容） -->
     <main>
       <!-- 在這裡放你的內容 -->
-      <!-- 點擊的圖塊 -->
-<div onclick="document.getElementById('myModal').showModal()" style="cursor:pointer; background: #ddd; padding: 20px;">
-  點擊我顯示小窗口
-</div>
 
-<!-- 彈出的小窗口 -->
-<dialog id="myModal" style="border-radius: 8px; padding: 20px;">
-  <p>這是小窗口的內容！</p>
-  <button onclick="document.getElementById('myModal').close()">關閉</button>
-</dialog>
+      <!-- 範例：點擊觸發 dialog -->
+      <div onclick="document.getElementById('myModal').showModal()"
+           style="cursor:pointer; display:inline-block; padding: 8px 18px;
+                  border: 1px solid var(--border); border-radius: 6px;
+                  font-size: 13px; color: var(--muted);
+                  transition: border-color 0.15s, color 0.15s;"
+           onmouseover="this.style.borderColor='var(--border-h)';this.style.color='var(--text)'"
+           onmouseout="this.style.borderColor='var(--border)';this.style.color='var(--muted)'">
+        點擊我顯示小窗口
+      </div>
+
+      <!-- Dialog 範本：複製這段，換掉 id / 標題 / 內文即可 -->
+      <dialog id="myModal">
+        <div class="dialog-header">
+          <span class="dialog-title">媒體</span>
+          <button class="dialog-close" onclick="document.getElementById('myModal').close()">✕</button>
+        </div>
+        <div class="dialog-body">
+
+          <div class="embed-wrap">
+            <div class="embed-label">YouTube</div>
+            <iframe
+              src="https://www.youtube.com/embed/6TcZp_u1P4Y?list=PLH_VGpqOeibN17WcQgKGyaftCu24_cics"
+              height="200"
+              allowfullscreen>
+            </iframe>
+          </div>
+
+          <div class="embed-wrap">
+            <div class="embed-label">Spotify</div>
+            <iframe
+              src="https://open.spotify.com/embed/album/5BmBdOh7Q78sz2TWLtRmF5"
+              height="352"
+              allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+              loading="lazy">
+            </iframe>
+          </div>
+
+        </div>
+      </dialog>
+
     </main>
 
   </div>
