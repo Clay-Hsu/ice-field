@@ -197,6 +197,10 @@
       gap: 1.25rem;
     }
 
+    .dialog-body::-webkit-scrollbar { width: 4px; }
+    .dialog-body::-webkit-scrollbar-track { background: transparent; }
+    .dialog-body::-webkit-scrollbar-thumb { background: var(--border-h); border-radius: 4px; }
+
     .embed-label {
       font-size: 11px;
       font-weight: 600;
@@ -287,35 +291,46 @@
         點擊我顯示小窗口
       </div>
 
-      <!-- Dialog 範本：複製這段，換掉 id / 標題 / 內文即可 -->
+      <!-- Dialog：按下才載入 embed，關閉時暫停 -->
       <dialog id="myModal">
         <div class="dialog-header">
           <span class="dialog-title">媒體</span>
-          <button class="dialog-close" onclick="document.getElementById('myModal').close()">✕</button>
+          <button class="dialog-close" id="myModalClose">✕</button>
         </div>
         <div class="dialog-body">
 
           <div class="embed-wrap">
             <div class="embed-label">YouTube</div>
-            <iframe
-              src="https://www.youtube.com/embed/6TcZp_u1P4Y?list=PLH_VGpqOeibN17WcQgKGyaftCu24_cics"
-              height="200"
-              allowfullscreen>
-            </iframe>
+            <iframe id="ytFrame" data-src="https://www.youtube.com/embed/6TcZp_u1P4Y?list=PLH_VGpqOeibN17WcQgKGyaftCu24_cics" height="200" allowfullscreen></iframe>
           </div>
 
           <div class="embed-wrap">
             <div class="embed-label">Spotify</div>
-            <iframe
-              src="https://open.spotify.com/embed/album/5BmBdOh7Q78sz2TWLtRmF5"
-              height="352"
-              allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-              loading="lazy">
-            </iframe>
+            <iframe id="spFrame" data-src="https://open.spotify.com/embed/album/5BmBdOh7Q78sz2TWLtRmF5?theme=0" height="352" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
           </div>
 
         </div>
       </dialog>
+
+      <script>
+        const modal = document.getElementById('myModal');
+        const ytFrame = document.getElementById('ytFrame');
+        const spFrame = document.getElementById('spFrame');
+
+        document.querySelector('[onclick]').addEventListener('click', () => {
+          if (!ytFrame.src) ytFrame.src = ytFrame.dataset.src;
+          if (!spFrame.src) spFrame.src = spFrame.dataset.src;
+          modal.showModal();
+        });
+
+        document.getElementById('myModalClose').addEventListener('click', () => {
+          modal.close();
+          ytFrame.src = '';
+          spFrame.src = '';
+        });
+
+        document.querySelector('[onclick]').removeAttribute('onclick');
+      </script>
 
     </main>
 
