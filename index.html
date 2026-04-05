@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>我的網站</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:       #f5f4f0;
+      --surface:  #ffffff;
+      --border:   #e2e0d8;
+      --text:     #1a1917;
+      --muted:    #6b6962;
+      --accent:   #2a5caa;
+      --accent-h: #1e4485;
+      --nav-w:    220px;
+      --aside-w:  200px;
+      --radius:   10px;
+      --font-body: 'DM Sans', 'Noto Sans TC', sans-serif;
+    }
+
+    html, body { height: 100%; }
+
+    body {
+      font-family: var(--font-body);
+      background: var(--bg);
+      color: var(--text);
+      font-size: 15px;
+      line-height: 1.7;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { color: var(--accent-h); text-decoration: underline; }
+
+    /* ── Header ── */
+    header {
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      padding: 0 2rem;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .logo {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--text);
+      letter-spacing: -0.3px;
+    }
+
+    .header-nav {
+      display: flex;
+      gap: 1.5rem;
+      list-style: none;
+    }
+
+    .header-nav a {
+      color: var(--muted);
+      font-size: 14px;
+      font-weight: 500;
+      transition: color 0.15s;
+    }
+
+    .header-nav a:hover { color: var(--text); text-decoration: none; }
+
+    /* ── Body wrapper ── */
+    .body-wrap {
+      display: flex;
+      flex: 1;
+      max-width: 1200px;
+      width: 100%;
+      margin: 0 auto;
+      padding: 2rem 1.5rem;
+      gap: 1.5rem;
+    }
+
+    /* ── Nav (Left Sidebar) ── */
+    nav.sidebar {
+      width: var(--nav-w);
+      flex-shrink: 0;
+    }
+
+    .sidebar-section {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.25rem;
+      margin-bottom: 1rem;
+    }
+
+    .sidebar-title {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 0.75rem;
+    }
+
+    .sidebar-nav {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .sidebar-nav a {
+      display: block;
+      padding: 6px 10px;
+      border-radius: 6px;
+      color: var(--text);
+      font-size: 14px;
+      transition: background 0.12s;
+    }
+
+    .sidebar-nav a:hover { background: var(--bg); text-decoration: none; }
+    .sidebar-nav a.active { background: #e8eef8; color: var(--accent); font-weight: 500; }
+
+    /* ── Main Content ── */
+    main {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.75rem;
+      margin-bottom: 1.25rem;
+    }
+
+    h1 { font-size: 22px; font-weight: 700; margin-bottom: 0.5rem; letter-spacing: -0.3px; }
+    h2 { font-size: 17px; font-weight: 600; margin-bottom: 0.75rem; }
+
+    .meta { font-size: 13px; color: var(--muted); margin-bottom: 1rem; }
+
+    p { color: #3a3835; margin-bottom: 1rem; }
+    p:last-child { margin-bottom: 0; }
+
+    .tag {
+      display: inline-block;
+      background: #e8eef8;
+      color: var(--accent);
+      font-size: 12px;
+      font-weight: 500;
+      padding: 2px 10px;
+      border-radius: 20px;
+      margin-right: 4px;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 8px 18px;
+      background: var(--accent);
+      color: #fff;
+      border-radius: 6px;
+      font-size: 14px;
+      font-weight: 500;
+      border: none;
+      cursor: pointer;
+      transition: background 0.15s;
+    }
+
+    .btn:hover { background: var(--accent-h); text-decoration: none; color: #fff; }
+
+    /* ── Aside (Right Sidebar) ── */
+    aside {
+      width: var(--aside-w);
+      flex-shrink: 0;
+    }
+
+    .widget {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.25rem;
+      margin-bottom: 1rem;
+    }
+
+    .widget-title {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--muted);
+      margin-bottom: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
+    .widget ul { list-style: none; display: flex; flex-direction: column; gap: 6px; }
+    .widget ul li { font-size: 13px; }
+    .widget ul li::before { content: "→ "; color: var(--accent); }
+
+    /* ── Footer ── */
+    footer {
+      background: var(--surface);
+      border-top: 1px solid var(--border);
+      text-align: center;
+      padding: 1.25rem 2rem;
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 900px) {
+      nav.sidebar { display: none; }
+      aside { display: none; }
+    }
+
+    @media (max-width: 600px) {
+      .body-wrap { padding: 1rem; }
+      .header-nav { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ① Header -->
+  <header>
+    <div class="logo">我的網站</div>
+    <ul class="header-nav">
+      <li><a href="#">首頁</a></li>
+      <li><a href="#">關於</a></li>
+      <li><a href="#">作品集</a></li>
+      <li><a href="#">聯絡</a></li>
+    </ul>
+  </header>
+
+  <!-- ② Body: Nav + Main + Aside -->
+  <div class="body-wrap">
+
+    <!-- Left Nav -->
+    <nav class="sidebar">
+      <div class="sidebar-section">
+        <div class="sidebar-title">分類</div>
+        <ul class="sidebar-nav">
+          <li><a href="#" class="active">全部文章</a></li>
+          <li><a href="#">設計</a></li>
+          <li><a href="#">開發</a></li>
+          <li><a href="#">筆記</a></li>
+        </ul>
+      </div>
+      <div class="sidebar-section">
+        <div class="sidebar-title">快速連結</div>
+        <ul class="sidebar-nav">
+          <li><a href="#">GitHub</a></li>
+          <li><a href="#">作品集</a></li>
+          <li><a href="#">RSS</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main>
+      <div class="card">
+        <h1>歡迎來到我的網站</h1>
+        <p class="meta">2025年4月5日 · 5 分鐘閱讀</p>
+        <span class="tag">設計</span>
+        <span class="tag">開發</span>
+        <p style="margin-top: 1rem;">
+          這裡是主要內容區域。你可以放置文章、作品集項目、或任何你想展示的內容。
+          聖杯佈局讓頁面結構清晰，主內容佔最大空間，兩側各有輔助欄位。
+        </p>
+        <p>
+          修改這份 HTML 的內容、顏色變數（<code>:root</code> 區塊），或字型連結，
+          就能快速客製化整個網站的風格。
+        </p>
+        <a href="#" class="btn">了解更多</a>
+      </div>
+
+      <div class="card">
+        <h2>第二篇文章標題</h2>
+        <p class="meta">2025年3月20日</p>
+        <p>這裡放第二篇文章的摘要或內容預覽。可以依需求增加更多卡片區塊。</p>
+      </div>
+    </main>
+
+    <!-- Right Aside -->
+    <aside>
+      <div class="widget">
+        <div class="widget-title">關於我</div>
+        <p style="font-size: 13px; color: var(--muted);">嗨，我是某某人。喜歡設計與開發，正在持續學習中。</p>
+      </div>
+      <div class="widget">
+        <div class="widget-title">熱門標籤</div>
+        <ul>
+          <li>HTML / CSS</li>
+          <li>JavaScript</li>
+          <li>UI 設計</li>
+          <li>GitHub Pages</li>
+        </ul>
+      </div>
+    </aside>
+
+  </div>
+
+  <!-- ③ Footer -->
+  <footer>
+    © 2025 我的網站 · 用 ♥ 手工打造
+  </footer>
+
+</body>
+</html>
