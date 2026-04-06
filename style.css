@@ -94,7 +94,8 @@ header {
 
 /* ── Nav — 單一垂直線 ── */
 nav.sidebar {
-  width: var(--nav-w);
+  width: 15%;
+  min-width: 15%;
   flex-shrink: 0;
   border-right: 1px solid var(--border);
   padding: 0 1rem;
