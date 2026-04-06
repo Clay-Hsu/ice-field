@@ -1,0 +1,223 @@
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg:      #0f0f10;
+  --surface: #161618;
+  --border:  #2a2a2e;
+  --border-h:#3a3a40;
+  --text:    #e8e6e1;
+  --muted:   #6b6a72;
+  --accent:  #7c9ef5;
+  --nav-w:   180px;
+  --font:    'DM Sans', 'Noto Sans TC', sans-serif;
+  --mono:    'DM Mono', monospace;
+}
+
+html, body { height: 100%; }
+
+body {
+  font-family: var(--font);
+  background: var(--bg);
+  color: var(--text);
+  font-size: 15px;
+  line-height: 1.75;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+a { color: var(--accent); text-decoration: none; }
+a:hover { color: #a0b8ff; }
+
+/* ── Header ── */
+header {
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  padding: 0 2rem;
+  height: 58px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.logo {
+  font-family: var(--mono);
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text);
+}
+
+.logo span { color: var(--accent); }
+
+.header-nav {
+  display: flex;
+  gap: 2rem;
+  list-style: none;
+}
+
+.header-nav a {
+  font-size: 13px;
+  color: var(--muted);
+  transition: color 0.15s;
+}
+
+.header-nav a:hover { color: var(--text); }
+
+/* ── Body wrapper ── */
+.body-wrap {
+  display: flex;
+  flex: 1;
+  max-width: 1080px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 2.5rem 1.5rem;
+  gap: 0;
+}
+
+/* ── Nav — 單一垂直線 ── */
+nav.sidebar {
+  width: var(--nav-w);
+  flex-shrink: 0;
+  border-right: 1px solid var(--border);
+  padding-right: 2rem;
+  position: sticky;
+  top: 82px;
+  align-self: flex-start;
+}
+
+.nav-group { margin-bottom: 2.25rem; }
+
+.nav-label {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 0.6rem;
+  display: block;
+}
+
+.nav-items { list-style: none; }
+
+.nav-items li a {
+  display: block;
+  padding: 5px 0;
+  font-size: 13.5px;
+  color: var(--muted);
+  transition: color 0.12s;
+  cursor: pointer;
+}
+
+.nav-items li a:hover { color: var(--text); }
+.nav-items li a.active { color: var(--accent); }
+
+/* ── Main Content ── */
+main {
+  flex: 1;
+  min-width: 0;
+  padding-left: 2.5rem;
+}
+
+/* ── Dialog ── */
+dialog {
+  position: fixed;
+  left: 0;
+  top: 0;
+  margin: 0;
+  width: 33vw;
+  min-width: 280px;
+  height: 100vh;
+  background: var(--surface);
+  border: none;
+  border-right: 1px solid var(--border);
+  border-radius: 0;
+  padding: 0;
+  color: var(--text);
+  box-shadow: 4px 0 32px rgba(0,0,0,0.5);
+}
+
+dialog[open] {
+  display: flex;
+  flex-direction: column;
+}
+
+dialog::backdrop {
+  background: rgba(0,0,0,0.4);
+}
+
+.dialog-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 1.25rem;
+  border-bottom: 1px solid var(--border);
+  flex-shrink: 0;
+}
+
+.dialog-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.dialog-close {
+  background: none;
+  border: none;
+  color: var(--muted);
+  cursor: pointer;
+  font-size: 16px;
+  line-height: 1;
+  padding: 4px 6px;
+  border-radius: 4px;
+  transition: color 0.12s, background 0.12s;
+}
+
+.dialog-close:hover {
+  color: var(--text);
+  background: var(--border);
+}
+
+.dialog-body {
+  padding: 1.25rem;
+  flex: 1;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.dialog-body::-webkit-scrollbar { width: 4px; }
+.dialog-body::-webkit-scrollbar-track { background: transparent; }
+.dialog-body::-webkit-scrollbar-thumb { background: var(--border-h); border-radius: 4px; }
+
+.embed-wrap iframe {
+  width: 100%;
+  border-radius: 8px;
+  border: none;
+  display: block;
+}
+
+/* ── Footer ── */
+footer {
+  border-top: 1px solid var(--border);
+  text-align: center;
+  padding: 1.25rem;
+  font-size: 12px;
+  color: var(--muted);
+  font-family: var(--mono);
+}
+
+/* ── Responsive ── */
+@media (max-width: 680px) {
+  nav.sidebar { display: none; }
+  main { padding-left: 0; }
+  .body-wrap { padding: 1.25rem 1rem; }
+  dialog { width: 85vw; }
+}
+
+@media (max-width: 480px) {
+  .header-nav { display: none; }
+}
