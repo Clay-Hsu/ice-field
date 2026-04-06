@@ -97,10 +97,11 @@ nav.sidebar {
   width: var(--nav-w);
   flex-shrink: 0;
   border-right: 1px solid var(--border);
-  padding: 0 1.5rem;
+  padding: 0 1rem;
   position: sticky;
   top: 82px;
   align-self: flex-start;
+  box-sizing: border-box;
 }
 
 .nav-group { margin-bottom: 2.25rem; }
