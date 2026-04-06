@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;500;700&family=DM+Mono:wght@400;500&display=swap');
+
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 :root {
@@ -9,9 +11,24 @@
   --muted:   #6b6a72;
   --accent:  #7c9ef5;
   --nav-w:   180px;
-  --font:    'DM Sans', 'Noto Sans TC', sans-serif;
+  --font:    'Noto Serif TC', serif;
   --mono:    'DM Mono', monospace;
 }
+
+/* ── 標題 ── */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font);
+  color: var(--text);
+  line-height: 1.3;
+  font-weight: 700;
+}
+
+h1 { font-size: 2rem;    margin-bottom: 1rem; }
+h2 { font-size: 1.5rem;  margin-bottom: 0.75rem; }
+h3 { font-size: 1.25rem; margin-bottom: 0.6rem; }
+h4 { font-size: 1rem;    margin-bottom: 0.5rem; }
+
+p  { margin-bottom: 1rem; color: #a8a6a1; }
 
 html, body { height: 100%; }
 
