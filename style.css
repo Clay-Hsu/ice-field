@@ -87,10 +87,8 @@ header {
 .body-wrap {
   display: flex;
   flex: 1;
-  max-width: 100%;  /* 原本是 1080px，改成 100% */
   width: 100%;
-  margin: 0 auto;
-  padding: 2.5rem 15%;
+  padding: 2.5rem 0;
   gap: 0;
 }
 
@@ -99,7 +97,7 @@ nav.sidebar {
   width: var(--nav-w);
   flex-shrink: 0;
   border-right: 1px solid var(--border);
-  padding-right: 2rem;
+  padding: 0 1.5rem;
   position: sticky;
   top: 82px;
   align-self: flex-start;
@@ -135,7 +133,8 @@ nav.sidebar {
 main {
   flex: 1;
   min-width: 0;
-  padding-left: 2.5rem;
+  padding: 0 2rem;
+  margin-right: 15%;
 }
 
 /* ── Dialog ── */
@@ -230,8 +229,8 @@ footer {
 /* ── Responsive ── */
 @media (max-width: 680px) {
   nav.sidebar { display: none; }
-  main { padding-left: 0; }
-  .body-wrap { padding: 1.25rem 1rem; }
+  main { padding-left: 1rem; margin-right: 0; }
+  .body-wrap { padding: 1.25rem 0; }
   dialog { width: 85vw; }
 }
 
