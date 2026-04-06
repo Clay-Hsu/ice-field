@@ -10,7 +10,7 @@
   --text:    #e8e6e1;
   --muted:   #6b6a72;
   --accent:  #7c9ef5;
-  --nav-w:   180px;
+  --nav-w: 120px;  /* 原本是 180px */
   --font:    'Noto Serif TC', serif;
   --mono:    'DM Mono', monospace;
 }
@@ -87,7 +87,7 @@ header {
 .body-wrap {
   display: flex;
   flex: 1;
-  max-width: 1080px;
+  max-width: 100%;  /* 原本是 1080px，改成 100% */
   width: 100%;
   margin: 0 auto;
   padding: 2.5rem 1.5rem;
