@@ -54,8 +54,8 @@
   </dialog>
 
   <script>
-    fetch('_header.html').then(r => r.text()).then(h => document.getElementById('header-placeholder').innerHTML = h);
-    fetch('_sidebar.html').then(r => r.text()).then(h => document.getElementById('sidebar-placeholder').innerHTML = h);
+    fetch('header.html').then(r => r.text()).then(h => document.getElementById('header-placeholder').innerHTML = h);
+    fetch('sidebar.html').then(r => r.text()).then(h => document.getElementById('sidebar-placeholder').innerHTML = h);
 
     const modal   = document.getElementById('mediaModal');
     const ytFrame = document.getElementById('ytFrame');
