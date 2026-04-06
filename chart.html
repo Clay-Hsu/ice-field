@@ -1,1 +1,27 @@
-
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>關於 — 我的網站</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/style.css" />
+  <style>html { background: #0f0f10; }</style>
+</head>
+<body>
+  <div id="header-placeholder"></div>
+  <div class="body-wrap">
+    <div id="sidebar-placeholder"></div>
+    <main>
+      <!-- 這頁的內容 -->
+    </main>
+  </div>
+  <footer>© 2025 我的網站 · built with ♥</footer>
+  <script>
+    fetch('/_header.html').then(r => r.text()).then(h => document.getElementById('header-placeholder').innerHTML = h);
+    fetch('/_sidebar.html').then(r => r.text()).then(h => document.getElementById('sidebar-placeholder').innerHTML = h);
+  </script>
+</body>
+</html>
