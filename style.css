@@ -94,15 +94,14 @@ header {
 
 /* ── Nav — 單一垂直線 ── */
 nav.sidebar {
-  width: 15%;
-  min-width: 15%;
-  flex-shrink: 0;
+  flex: 0 0 15%;
   border-right: 1px solid var(--border);
-  padding: 0 1rem;
+  padding: 0 1.5rem;
   position: sticky;
   top: 82px;
   align-self: flex-start;
   box-sizing: border-box;
+  overflow: hidden;
 }
 
 .nav-group { margin-bottom: 2.25rem; }
