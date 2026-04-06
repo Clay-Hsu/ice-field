@@ -7,21 +7,16 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="/style.css" />
+  <link rel="stylesheet" href="style.css" />
   <style>html { background: #0f0f10; }</style>
 </head>
 <body>
 
-  <!-- Header（共用） -->
   <div id="header-placeholder"></div>
 
-  <!-- Body -->
   <div class="body-wrap">
-
-    <!-- Sidebar（共用） -->
     <div id="sidebar-placeholder"></div>
 
-    <!-- Main（這頁自己的內容） -->
     <main>
       <!-- 在這裡放你的內容 -->
       <a href="#" id="openMedia"
@@ -31,10 +26,8 @@
         媒體
       </a>
     </main>
-
   </div>
 
-  <!-- Footer -->
   <footer>© 2025 我的網站 · built with ♥</footer>
 
   <!-- Media Dialog -->
@@ -61,15 +54,9 @@
   </dialog>
 
   <script>
-    /* 載入共用元件 */
-    fetch('/_header.html').then(r => r.text()).then(h => {
-      document.getElementById('header-placeholder').innerHTML = h;
-    });
-    fetch('/_sidebar.html').then(r => r.text()).then(h => {
-      document.getElementById('sidebar-placeholder').innerHTML = h;
-    });
+    fetch('header.html').then(r => r.text()).then(h => document.getElementById('header-placeholder').innerHTML = h);
+    fetch('sidebar.html').then(r => r.text()).then(h => document.getElementById('sidebar-placeholder').innerHTML = h);
 
-    /* Media Dialog */
     const modal   = document.getElementById('mediaModal');
     const ytFrame = document.getElementById('ytFrame');
     const spFrame = document.getElementById('spFrame');
