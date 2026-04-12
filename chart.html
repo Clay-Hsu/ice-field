@@ -3,24 +3,122 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>頁面標題</title>
+  <title>Chart — 我的網站</title>
   <link rel="stylesheet" href="style.css" />
-  <style>html { background: #0f0f10; }</style>
+  <style>
+    html { background: #0f0f10; }
+
+    .chart-wrap {
+      position: relative;
+      display: inline-block;
+      max-width: 100%;
+    }
+
+    .chart-wrap img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    /* 熱區覆蓋層 */
+    .chart-wrap map area {
+      cursor: pointer;
+    }
+  </style>
 </head>
 <body>
+
   <div id="header-placeholder"></div>
   <div class="body-wrap">
     <div id="sidebar-placeholder"></div>
     <main>
-      <!-- 這頁的內容 -->
-      <img src="images/chart0.png" alt="Chart"
-        style="max-width:100%; height:auto; display:block;" />
+
+      <div class="chart-wrap">
+        <img src="images/chart1.png" alt="NPC Chart" id="chartImg" usemap="#albummap" />
+        <map name="albummap">
+          <area shape="rect" coords="2,30,172,317"     href="#" onclick="openDialog('d1');return false;">
+          <area shape="rect" coords="172,30,342,317"   href="#" onclick="openDialog('d2');return false;">
+          <area shape="rect" coords="342,30,512,317"   href="#" onclick="openDialog('d3');return false;">
+          <area shape="rect" coords="512,30,682,317"   href="#" onclick="openDialog('d4');return false;">
+          <area shape="rect" coords="682,30,852,317"   href="#" onclick="openDialog('d5');return false;">
+          <area shape="rect" coords="2,317,172,604"    href="#" onclick="openDialog('d6');return false;">
+          <area shape="rect" coords="172,317,342,604"  href="#" onclick="openDialog('d7');return false;">
+          <area shape="rect" coords="342,317,512,604"  href="#" onclick="openDialog('d8');return false;">
+          <area shape="rect" coords="512,317,682,604"  href="#" onclick="openDialog('d9');return false;">
+          <area shape="rect" coords="682,317,852,604"  href="#" onclick="openDialog('d10');return false;">
+          <area shape="rect" coords="2,604,172,891"    href="#" onclick="openDialog('d11');return false;">
+          <area shape="rect" coords="172,604,342,891"  href="#" onclick="openDialog('d12');return false;">
+          <area shape="rect" coords="342,604,512,891"  href="#" onclick="openDialog('d13');return false;">
+          <area shape="rect" coords="512,604,682,891"  href="#" onclick="openDialog('d14');return false;">
+          <area shape="rect" coords="682,604,852,891"  href="#" onclick="openDialog('d15');return false;">
+          <area shape="rect" coords="2,891,172,1178"   href="#" onclick="openDialog('d16');return false;">
+          <area shape="rect" coords="172,891,342,1178" href="#" onclick="openDialog('d17');return false;">
+          <area shape="rect" coords="342,891,512,1178" href="#" onclick="openDialog('d18');return false;">
+          <area shape="rect" coords="512,891,682,1178" href="#" onclick="openDialog('d19');return false;">
+          <area shape="rect" coords="682,891,852,1178" href="#" onclick="openDialog('d20');return false;">
+          <area shape="rect" coords="2,1178,172,1465"  href="#" onclick="openDialog('d21');return false;">
+          <area shape="rect" coords="172,1178,342,1465" href="#" onclick="openDialog('d22');return false;">
+          <area shape="rect" coords="342,1178,512,1465" href="#" onclick="openDialog('d23');return false;">
+          <area shape="rect" coords="512,1178,682,1465" href="#" onclick="openDialog('d24');return false;">
+          <area shape="rect" coords="682,1178,852,1465" href="#" onclick="openDialog('d25');return false;">
+        </map>
+      </div>
+
     </main>
   </div>
+
   <footer>© 2025 我的網站 · built with ♥</footer>
+
+  <!-- 25 個 Dialog -->
+  <dialog id="d1"><div class="dialog-header"><span class="dialog-title">C418 - Minecraft Volume Beta</span><button class="dialog-close" onclick="closeDialog('d1')">✕</button></div><div class="dialog-body">你的介紹文字</div></dialog>
+  <dialog id="d2"><div class="dialog-header"><span class="dialog-title">American Football - American Football</span><button class="dialog-close" onclick="closeDialog('d2')">✕</button></div><div class="dialog-body">你的介紹文字</div></dialog>
+  <dialog id="d3"><div class="dialog-header"><span class="dialog-title">結束バンド - 結束バンド</span><button class="dialog-close" onclick="closeDialog('d3')">✕</button></div><div class="dialog-body">你的介紹文字</div></dialog>
+  <dialog id="d4"><div class="dialog-header"><span class="dialog-title">透明雜誌 - 我們的靈魂樂</span><button class="dialog-close" onclick="closeDialog('d4')">✕</button></div><div class="dialog-body">你的介紹文字</div></dialog>
+  <dialog id="d5"><div class="dialog-header"><span class="dialog-title">Fleetwood Mac - Rumours</span><button class="dialog-close" onclick="closeDialog('d5')">✕</button></div><div class="dialog-body">你的介紹文字</div></dialog>
+  <dialog id="d6"><div class="dialog-header"><span class="dialog-title">The Arrogant Sons of Bitches - Three Cheers For Disappointment</span><button class="dialog-close" onclick="closeDialog('d6')">✕</button></div><div class="dialog-body">你的介紹文字</div></dialog>
+  <dialog id="d7"><div class="dialog-header"><span class="dialog-title">Aphex Twin - Selected Ambient Works 85-92</span><button class="dialog-close" onclick="closeDialog('d7')">✕</button></div><div class="dialog-body">你的介紹文字</div></dialog>
+  <dialog id="d8"><div class="dialog-header"><span class="dialog-title">Car Seat Headrest - Twin Fantasy</span><button class="dialog-close" onclick="closeDialog('d8')">✕</button></div><div class="dialog-body">你的介紹文字</div></dialog>
+  <dialog id="d9"><div class="dialog-header"><span class="dialog-title">Weezer - Weezer (Blue Album)</span><button class="dialog-close" onclick="closeDialog('d9')">✕</button></div><div class="dialog-body">你的介紹文字</div></dialog>
+  <dialog id="d10"><div class="dialog-header"><span class="dialog-title">Brave Little Abacus - Just Got Back from the Discomfort We're Alright</span><button class="dialog-close" onclick="closeDialog('d10')">✕</button></div><div class="dialog-body">你的介紹文字</div></dialog>
+  <dialog id="d11"><div class="dialog-header"><span class="dialog-title">Kanye West - The College Dropout</span><button class="dialog-close" onclick="closeDialog('d11')">✕</button></div><div class="dialog-body">你的介紹文字</div></dialog>
+  <dialog id="d12"><div class="dialog-header"><span class="dialog-title">Wu Bai - 樹枝孤鳥</span><button class="dialog-close" onclick="closeDialog('d12')">✕</button></div><div class="dialog-body">你的介紹文字</div></dialog>
+  <dialog id="d13"><div class="dialog-header"><span class="dialog-title">wowaka - アンハッピーリフレイン</span><button class="dialog-close" onclick="closeDialog('d13')">✕</button></div><div class="dialog-body">你的介紹文字</div></dialog>
+  <dialog id="d14"><div class="dialog-header"><span class="dialog-title">万能青年旅店 - 万能青年旅店</span><button class="dialog-close" onclick="closeDialog('d14')">✕</button></div><div class="dialog-body">你的介紹文字</div></dialog>
+  <dialog id="d15"><div class="dialog-header"><span class="dialog-title">Sufjan Stevens - Illinois</span><button class="dialog-close" onclick="closeDialog('d15')">✕</button></div><div class="dialog-body">你的介紹文字</div></dialog>
+  <dialog id="d16"><div class="dialog-header"><span class="dialog-title">Talking Heads - Remain in Light</span><button class="dialog-close" onclick="closeDialog('d16')">✕</button></div><div class="dialog-body">你的介紹文字</div></dialog>
+  <dialog id="d17"><div class="dialog-header"><span class="dialog-title">Gorillaz - Plastic Beach</span><button class="dialog-close" onclick="closeDialog('d17')">✕</button></div><div class="dialog-body">你的介紹文字</div></dialog>
+  <dialog id="d18"><div class="dialog-header"><span class="dialog-title">100 gecs - 1000 gecs</span><button class="dialog-close" onclick="closeDialog('d18')">✕</button></div><div class="dialog-body">你的介紹文字</div></dialog>
+  <dialog id="d19"><div class="dialog-header"><span class="dialog-title">Sheena Ringo - 加爾基 精液 栗ノ花</span><button class="dialog-close" onclick="closeDialog('d19')">✕</button></div><div class="dialog-body">你的介紹文字</div></dialog>
+  <dialog id="d20"><div class="dialog-header"><span class="dialog-title">羅大佑 - 之乎者也</span><button class="dialog-close" onclick="closeDialog('d20')">✕</button></div><div class="dialog-body">你的介紹文字</div></dialog>
+  <dialog id="d21"><div class="dialog-header"><span class="dialog-title">Green Day - American Idiot</span><button class="dialog-close" onclick="closeDialog('d21')">✕</button></div><div class="dialog-body">你的介紹文字</div></dialog>
+  <dialog id="d22"><div class="dialog-header"><span class="dialog-title">No Party For Cao Dong - 魏如昀</span><button class="dialog-close" onclick="closeDialog('d22')">✕</button></div><div class="dialog-body">你的介紹文字</div></dialog>
+  <dialog id="d23"><div class="dialog-header"><span class="dialog-title">Tally Hall - Marvin's Marvelous Mechanical Museum</span><button class="dialog-close" onclick="closeDialog('d23')">✕</button></div><div class="dialog-body">你的介紹文字</div></dialog>
+  <dialog id="d24"><div class="dialog-header"><span class="dialog-title">The Velvet Underground - The Velvet Underground & Nico</span><button class="dialog-close" onclick="closeDialog('d24')">✕</button></div><div class="dialog-body">你的介紹文字</div></dialog>
+  <dialog id="d25"><div class="dialog-header"><span class="dialog-title">Dismemberment Plan - Emergency & I</span><button class="dialog-close" onclick="closeDialog('d25')">✕</button></div><div class="dialog-body">你的介紹文字</div></dialog>
+
   <script>
     fetch('header.html').then(r => r.text()).then(h => document.getElementById('header-placeholder').innerHTML = h);
     fetch('sidebar.html').then(r => r.text()).then(h => document.getElementById('sidebar-placeholder').innerHTML = h);
+
+    /* image map 縮放補正 */
+    function scaleMap() {
+      const img = document.getElementById('chartImg');
+      const scale = img.offsetWidth / img.naturalWidth;
+      document.querySelectorAll('map area').forEach(area => {
+        const orig = area.getAttribute('coords').split(',').map(Number);
+        area.coords = orig.map(v => Math.round(v * scale)).join(',');
+      });
+    }
+    window.addEventListener('load', scaleMap);
+    window.addEventListener('resize', scaleMap);
+
+    function openDialog(id) {
+      document.getElementById(id).showModal();
+    }
+    function closeDialog(id) {
+      document.getElementById(id).close();
+    }
   </script>
+
 </body>
 </html>
