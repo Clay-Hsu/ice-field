@@ -10,7 +10,7 @@
   --text:    #e8e6e1;
   --muted:   #6b6a72;
   --accent:  #7c9ef5;
-  --nav-w:   20%;
+  --nav-w:   15%;
   --font:    'Noto Serif TC', serif;
   --mono:    'DM Mono', monospace;
 }
@@ -94,7 +94,7 @@ header {
 
 /* ── Nav — 單一垂直線 ── */
 nav.sidebar {
-  flex: 0 0 15%;
+  flex: 0 0 20%;
   border-right: 1px solid var(--border);
   padding: 0 1.5rem;
   position: sticky;
@@ -146,7 +146,7 @@ dialog {
   margin: 0;
   width: 33vw;
   min-width: 280px;
-  height: 100vh;
+  height: 100dvh;
   background: var(--surface);
   border: none;
   border-right: 1px solid var(--border);
@@ -154,15 +154,38 @@ dialog {
   padding: 0;
   color: var(--text);
   box-shadow: 4px 0 32px rgba(0,0,0,0.5);
+  opacity: 0;
+  transform: translateX(-24px);
+  transition: opacity 0.25s ease, transform 0.25s ease, display 0.25s allow-discrete;
 }
 
 dialog[open] {
   display: flex;
   flex-direction: column;
+  opacity: 1;
+  transform: translateX(0);
+}
+
+@starting-style {
+  dialog[open] {
+    opacity: 0;
+    transform: translateX(-24px);
+  }
 }
 
 dialog::backdrop {
+  background: rgba(0,0,0,0);
+  transition: background 0.25s ease, display 0.25s allow-discrete;
+}
+
+dialog[open]::backdrop {
   background: rgba(0,0,0,0.4);
+}
+
+@starting-style {
+  dialog[open]::backdrop {
+    background: rgba(0,0,0,0);
+  }
 }
 
 .dialog-header {
