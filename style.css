@@ -254,27 +254,37 @@ dialog[open]::backdrop {
 }
 
 /* ── Cards ── */
-.card-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-  gap: 1.25rem;
-  padding: 1rem 0;
+/* 定義炫彩動畫：顏色緩緩流動 */
+@keyframes rainbow-glow {
+  0%   { border-color: #7c9ef5; box-shadow: 0 0 20px rgba(124,158,245,0.3); }
+  33%  { border-color: #d4537e; box-shadow: 0 0 20px rgba(212,83,126,0.3); }
+  66%  { border-color: #1d9e75; box-shadow: 0 0 20px rgba(29,158,117,0.3); }
+  100% { border-color: #7c9ef5; box-shadow: 0 0 20px rgba(124,158,245,0.3); }
 }
 
 .card {
   background: var(--surface);
   border: 1px solid var(--border);
   border-radius: 16px;
-  padding: 1.25rem 1.5rem;
+  padding: 1.5rem;
   text-decoration: none;
   color: var(--text);
-  display: block;
+  
+  /* ── 控制高度 ── */
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  min-height: 180px;      /* 設定最小高度，確保卡片不會太扁 */
+  /* aspect-ratio: 16 / 10; */ /* 如果你想要固定比例（如長方形），可以取消這行註解 */
+
   position: relative;
-  transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease;
+  transition: transform 0.3s ease, border-color 0.3s ease;
 }
 
+/* Hover 時啟動炫彩動畫 */
 .card:hover {
-  transform: translateY(-2px);
+  transform: translateY(-6px); /* 向上飄浮感增加 */
+  animation: rainbow-glow 4s infinite linear; /* 4秒循環一次顏色 */
   text-decoration: none;
   color: var(--text);
 }
