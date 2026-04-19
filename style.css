@@ -62,7 +62,7 @@ header {
 
 .logo {
   font-family: var(--mono);
-  font-size: 14px;
+  font-size: 18px;
   font-weight: 500;
   color: var(--text);
 }
@@ -76,7 +76,7 @@ header {
 }
 
 .header-nav a {
-  font-size: 13px;
+  font-size: 14px;
   color: var(--muted);
   transition: color 0.15s;
 }
