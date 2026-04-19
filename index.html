@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>我的網站</title>
+  <title>PGOL</title>
   <link rel="stylesheet" href="style.css" />
   <style>html { background: #0f0f10; }</style>
 </head>
@@ -42,51 +42,6 @@
   </div>
 
   <footer>© 2025 我的網站 · built with ♥</footer>
-
-  <!-- Media Dialog -->
-  <dialog id="mediaModal">
-    <div class="dialog-header">
-      <span class="dialog-title">媒體</span>
-      <button class="dialog-close" id="mediaClose">✕</button>
-    </div>
-    <div class="dialog-body">
-      <div class="embed-wrap">
-        <p style="color:#a8a6a1; font-size:13px; margin-bottom:0.5rem;">YouTube</p>
-        <iframe id="ytFrame"
-          data-src="https://www.youtube.com/embed/6TcZp_u1P4Y?list=PLH_VGpqOeibN17WcQgKGyaftCu24_cics"
-          height="200" allowfullscreen></iframe>
-      </div>
-      <div class="embed-wrap">
-        <p style="color:#a8a6a1; font-size:13px; margin-bottom:0.5rem;">Spotify</p>
-        <iframe id="spFrame"
-          data-src="https://open.spotify.com/embed/album/5BmBdOh7Q78sz2TWLtRmF5?theme=0"
-          height="352"
-          allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
-      </div>
-    </div>
-  </dialog>
-
-  <script>
-    fetch('header.html').then(r => r.text()).then(h => document.getElementById('header-placeholder').innerHTML = h);
-    fetch('sidebar.html').then(r => r.text()).then(h => document.getElementById('sidebar-placeholder').innerHTML = h);
-
-    const modal   = document.getElementById('mediaModal');
-    const ytFrame = document.getElementById('ytFrame');
-    const spFrame = document.getElementById('spFrame');
-
-    document.getElementById('openMedia').addEventListener('click', (e) => {
-      e.preventDefault();
-      ytFrame.src = ytFrame.dataset.src;
-      spFrame.src = spFrame.dataset.src;
-      modal.showModal();
-    });
-
-    document.getElementById('mediaClose').addEventListener('click', () => {
-      modal.close();
-      ytFrame.src = '';
-      spFrame.src = '';
-    });
-  </script>
 
 </body>
 </html>
