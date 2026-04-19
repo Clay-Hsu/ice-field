@@ -6,7 +6,8 @@
     <li><a href="collaborate.html">合作</a></li>
     <li><a href="bulletin.html">公佈欄</a></li>
   </ul>
-  <button class="hamburger" id="hamburger" aria-label="開啟選單">
+  <button class="hamburger" id="hamburger" aria-label="開啟選單"
+    onclick="this.classList.toggle('active'); document.getElementById('mobile-nav').classList.toggle('open');">
     <span></span><span></span><span></span>
   </button>
 </header>
@@ -19,16 +20,3 @@
     <li><a href="bulletin.html">公佈欄</a></li>
   </ul>
 </nav>
-
-<script>
-  setTimeout(() => {
-    const btn = document.getElementById('hamburger');
-    const nav = document.getElementById('mobile-nav');
-    if (btn && nav) {
-      btn.addEventListener('click', () => {
-        nav.classList.toggle('open');
-        btn.classList.toggle('active');
-      });
-    }
-  }, 0);
-</script>
