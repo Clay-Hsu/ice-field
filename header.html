@@ -21,10 +21,14 @@
 </nav>
 
 <script>
-  const btn = document.getElementById('hamburger');
-  const nav = document.getElementById('mobile-nav');
-  btn.addEventListener('click', () => {
-    nav.classList.toggle('open');
-    btn.classList.toggle('active');
-  });
+  setTimeout(() => {
+    const btn = document.getElementById('hamburger');
+    const nav = document.getElementById('mobile-nav');
+    if (btn && nav) {
+      btn.addEventListener('click', () => {
+        nav.classList.toggle('open');
+        btn.classList.toggle('active');
+      });
+    }
+  }, 0);
 </script>
