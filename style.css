@@ -3,18 +3,19 @@
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 :root {
-  --bg:      #0f0f10;
-  --surface: #161618;
-  --border:  #2a2a2e;
-  --border-h:#3a3a40;
-  --text:    #e8e6e1;
-  --muted:   #6b6a72;
-  --accent:  #7c9ef5;
-  --nav-w:   15%;
-  --font:    'Noto Serif TC', serif;
-  --mono:    'DM Mono', monospace;
+  --bg:        #0f0f10;
+  --surface:   #161618;
+  --border:    #2a2a2e;
+  --border-h:  #3a3a40;
+  --text:      #e8e6e1;
+  --muted:     #9DA3AF;
+  --accent:    #4CC0E8;
+  --accent-h:  #7dd4f0;
+  --secondary: #0B1528;
+  --nav-w:     15%;
+  --font:      'Noto Serif TC', serif;
+  --mono:      'DM Mono', monospace;
 }
-
 /* ── 標題 ── */
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font);
