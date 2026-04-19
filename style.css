@@ -138,6 +138,15 @@ main {
   padding: 0 2rem;
   margin-right: 15%;
 }
+/* 首頁專用：無側邊欄，card-grid 置中 */
+main.no-sidebar {
+  margin-right: 0;
+}
+
+main.no-sidebar .card-grid {
+  max-width: 1200px;
+  margin: 0 auto;
+}
 
 /* ── Dialog ── */
 dialog {
