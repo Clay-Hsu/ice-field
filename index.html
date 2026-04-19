@@ -40,7 +40,10 @@
       </div>
     </main>
   </div>
-
+  
+  <script>
+    fetch('header.html').then(r => r.text()).then(h => document.getElementById('header-placeholder').innerHTML = h);
+  </script>
   <footer>© 2025 我的網站 · built with ♥</footer>
 
 </body>
