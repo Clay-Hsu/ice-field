@@ -3,14 +3,17 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>PGOL</title>
+  <title>時間軸</title>
   <link rel="stylesheet" href="style.css" />
   <style>html { background: #0f0f10; }</style>
 </head>
 <body>
+
   <div id="header-placeholder"></div>
+
   <div class="body-wrap">
     <div id="sidebar-placeholder"></div>
+
     <main>
       <h1>關於</h1>
 
@@ -19,6 +22,7 @@
   
   <script>
     fetch('header.html').then(r => r.text()).then(h => document.getElementById('header-placeholder').innerHTML = h);
+    fetch('sidebar.html').then(r => r.text()).then(h => document.getElementById('sidebar-placeholder').innerHTML = h);
   </script>
   <footer>© 2025 我的網站 · built with ♥</footer>
 
