@@ -16,6 +16,7 @@
   --font:      'Noto Serif TC', serif;
   --mono:      'DM Mono', monospace;
 }
+
 /* ── 標題 ── */
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font);
@@ -84,6 +85,61 @@ header {
 
 .header-nav a:hover { color: var(--text); }
 
+/* ── 漢堡按鈕（預設隱藏）── */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 6px;
+}
+
+.hamburger span {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background: var(--muted);
+  border-radius: 2px;
+  transition: transform 0.2s, opacity 0.2s;
+}
+
+.hamburger.active span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.hamburger.active span:nth-child(2) { opacity: 0; }
+.hamburger.active span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+/* ── 手機展開選單（預設隱藏）── */
+.mobile-nav {
+  display: none;
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  position: sticky;
+  top: 58px;
+  z-index: 99;
+}
+
+.mobile-nav.open { display: block; }
+
+.mobile-nav ul {
+  list-style: none;
+  padding: 0.5rem 0;
+}
+
+.mobile-nav ul li a {
+  display: block;
+  padding: 0.75rem 1.5rem;
+  font-size: 15px;
+  color: var(--muted);
+  transition: color 0.12s, background 0.12s;
+}
+
+.mobile-nav ul li a:hover {
+  color: var(--text);
+  background: var(--border);
+}
+
 /* ── Body wrapper ── */
 .body-wrap {
   display: flex;
@@ -138,7 +194,8 @@ main {
   padding: 0 2rem;
   margin-right: 15%;
 }
-/* 首頁專用：無側邊欄，card-grid 置中 */
+
+/* ── 首頁專用：無側邊欄，card-grid 置中 ── */
 main.no-sidebar {
   margin-right: 0;
 }
@@ -264,90 +321,4 @@ dialog[open]::backdrop {
 }
 
 /* ── Cards ── */
-/* 定義炫彩動畫：顏色緩緩流動 */
-@keyframes rainbow-glow {
-  0%   { border-color: #7c9ef5; box-shadow: 0 0 15px rgba(124,158,245,0.3); }
-  50%  { border-color: #d4537e; box-shadow: 0 0 15px rgba(212,83,126,0.3); }
-  100% { border-color: #7c9ef5; box-shadow: 0 0 15px rgba(124,158,245,0.3); }
-}
-
-.card-grid {
-  display: grid;
-  /* auto-fill: 根據寬度自動塞入卡片 */
-  /* 280px: 這是你卡片的固定理想寬度 */
-  grid-template-columns: repeat(auto-fill, 280px); 
-  
-  /* 讓整個網格在畫面中置中 (如果一排不滿四個時) */
-  justify-content: center; 
-  
-  gap: 1.5rem;
-  padding: 2rem 0;
-}
-
-.card {
-  /* ───── 關鍵尺寸設定 ───── */
-  width: 280px;          /* 固定寬度 */
-  height: 200px;         /* 固定高度 (可依需求調整) */
-  
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: 16px;
-  padding: 1.5rem;
-  text-decoration: none;
-  color: var(--text);
-  
-  /* 內部排版：讓內容垂直排列 */
-  display: flex;
-  flex-direction: column;
-  box-sizing: border-box; /* 確保 padding 不會撐大寬度 */
-  position: relative;
-  transition: transform 0.3s ease;
-}
-
-/* Hover 時啟動炫彩動畫 */
-.card:hover {
-  transform: translateY(-6px);
-  animation: rainbow-glow 3s infinite linear;
-}
-
-.card.glow-blue:hover  { border-color: #7c9ef5; box-shadow: 0 0 18px 2px rgba(124,158,245,0.35), 0 0 40px 4px rgba(124,158,245,0.15); }
-.card.glow-teal:hover  { border-color: #1D9E75; box-shadow: 0 0 18px 2px rgba(29,158,117,0.35), 0 0 40px 4px rgba(29,158,117,0.15); }
-.card.glow-pink:hover  { border-color: #D4537E; box-shadow: 0 0 18px 2px rgba(212,83,126,0.35), 0 0 40px 4px rgba(212,83,126,0.15); }
-.card.glow-amber:hover { border-color: #EF9F27; box-shadow: 0 0 18px 2px rgba(239,159,39,0.35), 0 0 40px 4px rgba(239,159,39,0.15); }
-.card.glow-purple:hover{ border-color: #7F77DD; box-shadow: 0 0 18px 2px rgba(127,119,221,0.35), 0 0 40px 4px rgba(127,119,221,0.15); }
-
-.card-title {
-  font-size: 15px;
-  font-weight: 700;
-  color: var(--text);
-  margin-bottom: 0.5rem;
-}
-
-.card-body {
-  font-size: 13px;
-  color: var(--muted);
-  line-height: 1.6;
-  margin: 0;
-}
-
-/* ── Footer ── */
-footer {
-  border-top: 1px solid var(--border);
-  text-align: center;
-  padding: 1.25rem;
-  font-size: 12px;
-  color: var(--muted);
-  font-family: var(--mono);
-}
-
-/* ── Responsive ── */
-@media (max-width: 680px) {
-  nav.sidebar { display: none; }
-  main { padding-left: 1rem; margin-right: 0; }
-  .body-wrap { padding: 1.25rem 0; }
-  dialog { width: 85vw; }
-}
-
-@media (max-width: 480px) {
-  .header-nav { display: none; }
-}
+@keyf
