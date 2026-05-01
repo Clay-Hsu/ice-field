@@ -3,74 +3,405 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>時間軸</title>
+  <title>Timeline — 台灣當代音樂譜系</title>
   <link rel="stylesheet" href="style.css" />
-  <style>html { background: #0f0f10; }</style>
+  <style>
+    html { background: #0f0f10; }
+ 
+    .svg-wrap {
+      width: 100%;
+      overflow-x: auto;
+    }
+ 
+    .svg-wrap svg {
+      min-width: 900px;
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+ 
+    /* SVG 可點擊文字 */
+    .clickable {
+      cursor: pointer;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      text-decoration-color: rgba(255,255,255,0.3);
+      transition: fill 0.15s;
+    }
+ 
+    .clickable:hover {
+      fill: #4CC0E8 !important;
+    }
+  </style>
 </head>
 <body>
-
+ 
   <div id="header-placeholder"></div>
-
   <div class="body-wrap">
     <div id="sidebar-placeholder"></div>
-
     <main>
-      <!-- 在這裡放你的內容 -->
-      <a href="#" id="openMedia"
-         style="font-size:13px; color:var(--muted); border:1px solid var(--border); padding:6px 16px; border-radius:6px; transition:color .15s,border-color .15s;"
-         onmouseover="this.style.color='var(--text)';this.style.borderColor='var(--border-h)'"
-         onmouseout="this.style.color='var(--muted)';this.style.borderColor='var(--border)'">
-        媒體
-      </a>
+      <div class="svg-wrap">
+<svg viewBox="0 0 1500 920" xmlns="http://www.w3.org/2000/svg" font-family="'Noto Sans TC', sans-serif">
+ 
+  <!-- Background -->
+  <rect width="1500" height="920" fill="#0f0f10"/>
+ 
+  <!-- ── 時間軸 ── -->
+  <line x1="130" y1="48" x2="1490" y2="48" stroke="#3a3a40" stroke-width="1"/>
+ 
+  <!-- 年代刻度 -->
+  <g fill="#6b6a72" font-size="13" font-family="'DM Mono', monospace">
+    <line x1="226"  y1="42" x2="226"  y2="54" stroke="#3a3a40"/>
+    <line x1="419"  y1="42" x2="419"  y2="54" stroke="#3a3a40"/>
+    <line x1="612"  y1="42" x2="612"  y2="54" stroke="#3a3a40"/>
+    <line x1="805"  y1="42" x2="805"  y2="54" stroke="#3a3a40"/>
+    <line x1="998"  y1="42" x2="998"  y2="54" stroke="#3a3a40"/>
+    <line x1="1191" y1="42" x2="1191" y2="54" stroke="#3a3a40"/>
+    <line x1="1384" y1="42" x2="1384" y2="54" stroke="#3a3a40"/>
+    <text x="226"  y="34" text-anchor="middle">'60</text>
+    <text x="419"  y="34" text-anchor="middle">'70</text>
+    <text x="612"  y="34" text-anchor="middle">'80</text>
+    <text x="805"  y="34" text-anchor="middle">'90</text>
+    <text x="998"  y="34" text-anchor="middle">2000</text>
+    <text x="1191" y="34" text-anchor="middle">'10</text>
+    <text x="1384" y="34" text-anchor="middle">'20</text>
+  </g>
+ 
+  <!-- ── 分類標籤 ── -->
+  <g fill="#6b6a72" font-size="11">
+    <text x="10" y="90">那卡西</text>
+    <text x="10" y="168">演歌</text>
+    <text x="10" y="228">客家</text>
+    <text x="10" y="360">搖滾</text>
+    <text x="10" y="465">民謠</text>
+    <text x="10" y="535">時代曲</text>
+    <text x="10" y="680">電子/節奏</text>
+    <text x="10" y="790">嘻哈</text>
+  </g>
+ 
+  <!-- ── 台語系 ── -->
+  <line x1="130" y1="88" x2="1191" y2="88" stroke="#e8e6e1" stroke-width="1.5"/>
+  <text x="133" y="83" fill="#e8e6e1" font-size="12" class="clickable" onclick="openDialog('d-naka')">台語歌謠/後那卡西</text>
+ 
+  <line x1="419" y1="112" x2="998" y2="112" stroke="#e8e6e1" stroke-width="1.5"/>
+  <line x1="419" y1="88" x2="419" y2="112" stroke="#e8e6e1" stroke-width="1" stroke-dasharray="3,3"/>
+  <text x="422" y="107" fill="#e8e6e1" font-size="12" class="clickable" onclick="openDialog('d-trad-tai')">傳統台語流行</text>
+ 
+  <line x1="998" y1="112" x2="1480" y2="112" stroke="#e8e6e1" stroke-width="1.5"/>
+  <text x="1001" y="107" fill="#e8e6e1" font-size="12" class="clickable" onclick="openDialog('d-mod-tai')">當代台語音樂</text>
+ 
+  <line x1="786" y1="136" x2="998" y2="136" stroke="#e8e6e1" stroke-width="1.5"/>
+  <line x1="786" y1="112" x2="786" y2="136" stroke="#e8e6e1" stroke-width="1" stroke-dasharray="3,3"/>
+  <line x1="998" y1="112" x2="998" y2="136" stroke="#e8e6e1" stroke-width="1" stroke-dasharray="3,3"/>
+  <text x="789" y="131" fill="#e8e6e1" font-size="12" class="clickable" onclick="openDialog('d-new-tai')">新台語歌運動</text>
+ 
+  <!-- ── 客家系 ── -->
+  <line x1="612" y1="168" x2="998" y2="168" stroke="#e8e6e1" stroke-width="1.5"/>
+  <text x="615" y="163" fill="#e8e6e1" font-size="12" class="clickable" onclick="openDialog('d-trad-hak')">傳統客家流行</text>
+ 
+  <line x1="998" y1="168" x2="1480" y2="168" stroke="#e8e6e1" stroke-width="1.5"/>
+  <text x="1001" y="163" fill="#e8e6e1" font-size="12" class="clickable" onclick="openDialog('d-mod-hak')">當代客家音樂</text>
+ 
+  <!-- ── 搖滾系 ── -->
+  <line x1="882" y1="196" x2="1384" y2="196" stroke="#e8e6e1" stroke-width="1.5"/>
+  <text x="885" y="191" fill="#e8e6e1" font-size="12" class="clickable" onclick="openDialog('d-hakka-rock')">台客搖滾</text>
+ 
+  <line x1="766" y1="220" x2="1480" y2="220" stroke="#e8e6e1" stroke-width="1.5"/>
+  <text x="769" y="215" fill="#e8e6e1" font-size="12" class="clickable" onclick="openDialog('d-metal')">重金屬/東方金屬</text>
+ 
+  <line x1="766" y1="244" x2="1480" y2="244" stroke="#e8e6e1" stroke-width="1.5"/>
+  <text x="769" y="239" fill="#e8e6e1" font-size="12" class="clickable" onclick="openDialog('d-punk')">龐克/Emo</text>
+ 
+  <line x1="747" y1="268" x2="998" y2="268" stroke="#e8e6e1" stroke-width="1.5"/>
+  <text x="660" y="273" fill="#6b6a72" font-size="11">另類搖滾</text>
+  <text x="750" y="263" fill="#e8e6e1" font-size="12" class="clickable" onclick="openDialog('d-underground')">地下音樂</text>
+ 
+  <line x1="998" y1="268" x2="1384" y2="268" stroke="#e8e6e1" stroke-width="1.5"/>
+  <text x="1001" y="263" fill="#e8e6e1" font-size="12" class="clickable" onclick="openDialog('d-indie-rock')">獨立搖滾</text>
+ 
+  <line x1="1306" y1="292" x2="1480" y2="292" stroke="#e8e6e1" stroke-width="1.5"/>
+  <line x1="1306" y1="268" x2="1306" y2="292" stroke="#e8e6e1" stroke-width="1" stroke-dasharray="3,3"/>
+  <text x="1309" y="287" fill="#e8e6e1" font-size="12" class="clickable" onclick="openDialog('d-indie-rock2')">流行/獨立搖滾II</text>
+ 
+  <line x1="130" y1="340" x2="535" y2="340" stroke="#e8e6e1" stroke-width="1.5"/>
+  <text x="133" y="335" fill="#e8e6e1" font-size="12" class="clickable" onclick="openDialog('d-hot')">熱門音樂</text>
+  <text x="10"  y="345" fill="#6b6a72" font-size="11">Rock'n'Roll</text>
+ 
+  <line x1="651" y1="340" x2="901" y2="340" stroke="#e8e6e1" stroke-width="1.5"/>
+  <text x="654" y="335" fill="#e8e6e1" font-size="12" class="clickable" onclick="openDialog('d-pop-rock1')">流行搖滾I</text>
+ 
+  <line x1="979" y1="340" x2="1480" y2="340" stroke="#e8e6e1" stroke-width="1.5"/>
+  <text x="982" y="335" fill="#e8e6e1" font-size="12" class="clickable" onclick="openDialog('d-pop-rock2')">流行搖滾II</text>
+ 
+  <line x1="998" y1="364" x2="1480" y2="364" stroke="#e8e6e1" stroke-width="1.5"/>
+  <text x="1001" y="359" fill="#e8e6e1" font-size="12" class="clickable" onclick="openDialog('d-indie-pop')">獨立流行/樂團流行</text>
+ 
+  <!-- ── 民謠系 ── -->
+  <text x="10" y="465" fill="#6b6a72" font-size="11">民謠復興</text>
+  <line x1="516" y1="460" x2="651" y2="460" stroke="#e8e6e1" stroke-width="1.5"/>
+  <text x="519" y="455" fill="#e8e6e1" font-size="12" class="clickable" onclick="openDialog('d-campus')">校園民歌</text>
+ 
+  <line x1="651" y1="460" x2="805" y2="460" stroke="#e8e6e1" stroke-width="1.5"/>
+  <text x="654" y="455" fill="#e8e6e1" font-size="12" class="clickable" onclick="openDialog('d-post-folk')">後民歌</text>
+ 
+  <line x1="998" y1="460" x2="1480" y2="460" stroke="#e8e6e1" stroke-width="1.5"/>
+  <text x="1001" y="455" fill="#e8e6e1" font-size="12" class="clickable" onclick="openDialog('d-folk-pop')">民謠流行</text>
+ 
+  <!-- ── 華語流行系 ── -->
+  <line x1="130" y1="530" x2="709" y2="530" stroke="#e8e6e1" stroke-width="1.5"/>
+  <text x="133" y="525" fill="#e8e6e1" font-size="12" class="clickable" onclick="openDialog('d-mando-trad')">傳統華語流行</text>
+ 
+  <line x1="670" y1="554" x2="1384" y2="554" stroke="#e8e6e1" stroke-width="1.5"/>
+  <text x="673" y="549" fill="#e8e6e1" font-size="12" class="clickable" onclick="openDialog('d-chinese-style')">中國風</text>
+ 
+  <line x1="709" y1="530" x2="1287" y2="530" stroke="#e8e6e1" stroke-width="1.5"/>
+  <text x="712" y="525" fill="#e8e6e1" font-size="12" class="clickable" onclick="openDialog('d-ballad')">芭樂流行/成人當代</text>
+ 
+  <line x1="805" y1="578" x2="1384" y2="578" stroke="#e8e6e1" stroke-width="1.5"/>
+  <text x="808" y="573" fill="#e8e6e1" font-size="12" class="clickable" onclick="openDialog('d-city-pop')">城市流行</text>
+ 
+  <line x1="901" y1="602" x2="1480" y2="602" stroke="#e8e6e1" stroke-width="1.5"/>
+  <text x="904" y="597" fill="#e8e6e1" font-size="12" class="clickable" onclick="openDialog('d-dance-pop')">舞曲/電音/嘻哈流行</text>
+ 
+  <line x1="1345" y1="626" x2="1480" y2="626" stroke="#e8e6e1" stroke-width="1.5"/>
+  <text x="1200" y="621" fill="#e8e6e1" font-size="12" class="clickable" onclick="openDialog('d-douyin')">抖音流行/慢搖</text>
+ 
+  <!-- ── 電子/節奏系 ── -->
+  <line x1="805" y1="670" x2="1480" y2="670" stroke="#e8e6e1" stroke-width="1.5"/>
+  <text x="808" y="665" fill="#e8e6e1" font-size="12" class="clickable" onclick="openDialog('d-rnb')">R&amp;B / 節奏藍調</text>
+ 
+  <line x1="1094" y1="694" x2="1480" y2="694" stroke="#e8e6e1" stroke-width="1.5"/>
+  <text x="1097" y="689" fill="#e8e6e1" font-size="12" class="clickable" onclick="openDialog('d-reggae')">斯卡/雷鬼</text>
+ 
+  <line x1="805" y1="718" x2="1480" y2="718" stroke="#e8e6e1" stroke-width="1.5"/>
+  <text x="808" y="713" fill="#e8e6e1" font-size="12" class="clickable" onclick="openDialog('d-edm')">電子舞曲</text>
+ 
+  <line x1="901" y1="742" x2="1480" y2="742" stroke="#e8e6e1" stroke-width="1.5"/>
+  <text x="904" y="737" fill="#e8e6e1" font-size="12" class="clickable" onclick="openDialog('d-ambient')">電子/環境/實驗</text>
+ 
+  <!-- ── 嘻哈系 ── -->
+  <line x1="766" y1="790" x2="1480" y2="790" stroke="#e8e6e1" stroke-width="1.5"/>
+  <text x="769" y="785" fill="#e8e6e1" font-size="12" class="clickable" onclick="openDialog('d-hiphop')">嘻哈/饒舌</text>
+ 
+  <line x1="1287" y1="814" x2="1480" y2="814" stroke="#e8e6e1" stroke-width="1.5"/>
+  <line x1="1287" y1="790" x2="1287" y2="814" stroke="#e8e6e1" stroke-width="1" stroke-dasharray="3,3"/>
+  <text x="1150" y="809" fill="#e8e6e1" font-size="12" class="clickable" onclick="openDialog('d-tw-hiphop')">台式嘻哈</text>
+ 
+  <!-- ── 原住民音樂 ── -->
+  <line x1="612" y1="858" x2="1480" y2="858" stroke="#e8e6e1" stroke-width="1.5"/>
+  <text x="615" y="853" fill="#e8e6e1" font-size="12" class="clickable" onclick="openDialog('d-aboriginal')">原住民音樂</text>
+ 
+  <!-- ── 標題 ── -->
+  <text x="130" y="898" fill="#e8e6e1" font-size="28" font-weight="700">台灣當代音樂譜系</text>
+ 
+</svg>
+      </div>
     </main>
   </div>
-
+ 
   <footer>© 2025 我的網站 · built with ♥</footer>
-
-  <!-- Media Dialog -->
-  <dialog id="mediaModal">
-    <div class="dialog-header">
-      <span class="dialog-title">媒體</span>
-      <button class="dialog-close" id="mediaClose">✕</button>
-    </div>
-    <div class="dialog-body">
-      <div class="embed-wrap">
-        <p style="color:#a8a6a1; font-size:13px; margin-bottom:0.5rem;">YouTube</p>
-        <iframe id="ytFrame"
-          data-src="https://www.youtube.com/embed/6TcZp_u1P4Y?list=PLH_VGpqOeibN17WcQgKGyaftCu24_cics"
-          height="200" allowfullscreen></iframe>
-      </div>
-      <div class="embed-wrap">
-        <p style="color:#a8a6a1; font-size:13px; margin-bottom:0.5rem;">Spotify</p>
-        <iframe id="spFrame"
-          data-src="https://open.spotify.com/embed/album/5BmBdOh7Q78sz2TWLtRmF5?theme=0"
-          height="352"
-          allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
-      </div>
-    </div>
+ 
+  <!-- ── Dialogs ── -->
+  <dialog id="d-naka">
+    <div class="dialog-header"><span class="dialog-title">台語歌謠/後那卡西</span><button class="dialog-close" onclick="closeDialog('d-naka')">✕</button></div>
+    <div class="dialog-subheader">1955 — 2010</div>
+    <div class="dialog-body"><p>源自日治時期的那卡西（流し）文化，以即興伴奏和台語歌謠為核心，長期活躍於酒家、餐廳等場所。融合日本演歌與本土民謠，形成獨特的台灣庶民音樂美學，是戰後台灣流行音樂最重要的根基之一。</p></div>
   </dialog>
-
+ 
+  <dialog id="d-trad-tai">
+    <div class="dialog-header"><span class="dialog-title">傳統台語流行</span><button class="dialog-close" onclick="closeDialog('d-trad-tai')">✕</button></div>
+    <div class="dialog-subheader">1970 — 2000</div>
+    <div class="dialog-body"><p>以演歌曲風為基底，融合台語抒情旋律，代表人物包括文夏、鳳飛飛、鄧麗君等。這個時期的台語歌在政治壓制下仍頑強存活，成為台灣認同的重要載體。</p></div>
+  </dialog>
+ 
+  <dialog id="d-mod-tai">
+    <div class="dialog-header"><span class="dialog-title">當代台語音樂</span><button class="dialog-close" onclick="closeDialog('d-mod-tai')">✕</button></div>
+    <div class="dialog-subheader">2000 — 至今</div>
+    <div class="dialog-body"><p>新台語歌運動後的延續，融合搖滾、電子、嘻哈等現代元素，代表人物如滅火器、拍謝少年、農村武裝青年等，以台語表達當代社會議題與本土意識。</p></div>
+  </dialog>
+ 
+  <dialog id="d-new-tai">
+    <div class="dialog-header"><span class="dialog-title">新台語歌運動</span><button class="dialog-close" onclick="closeDialog('d-new-tai')">✕</button></div>
+    <div class="dialog-subheader">1989 — 2000</div>
+    <div class="dialog-body"><p>1989年前後，黑名單工作室、林強、陳明章等人以搖滾融合台語，打破台語歌謠舊有形象，成為台灣解嚴後本土文化復興的重要象徵。《向前走》是這個時期最具代表性的作品之一。</p></div>
+  </dialog>
+ 
+  <dialog id="d-trad-hak">
+    <div class="dialog-header"><span class="dialog-title">傳統客家流行</span><button class="dialog-close" onclick="closeDialog('d-trad-hak')">✕</button></div>
+    <div class="dialog-subheader">1980 — 2000</div>
+    <div class="dialog-body"><p>以客家山歌為基礎，結合現代流行編曲，試圖保存並推廣客語文化。這個時期的客家音樂多在客家聚落與地方電台流傳，較少進入主流市場。</p></div>
+  </dialog>
+ 
+  <dialog id="d-mod-hak">
+    <div class="dialog-header"><span class="dialog-title">當代客家音樂</span><button class="dialog-close" onclick="closeDialog('d-mod-hak')">✕</button></div>
+    <div class="dialog-subheader">2000 — 至今</div>
+    <div class="dialog-body"><p>客家電視台成立後，客語音樂得到更多曝光機會。林生祥、交工樂隊以搖滾結合客語，開創客家音樂新局面，獲得廣泛的跨族群認同。</p></div>
+  </dialog>
+ 
+  <dialog id="d-hakka-rock">
+    <div class="dialog-header"><span class="dialog-title">台客搖滾</span><button class="dialog-close" onclick="closeDialog('d-hakka-rock')">✕</button></div>
+    <div class="dialog-subheader">1994 — 2020</div>
+    <div class="dialog-body"><p>將台語、閩南俚俗文化與搖滾樂結合，刻意挪用「台客」這個帶有歧視意味的詞彙並加以翻轉，代表樂團包括濁水溪公社、929、董事長樂團等，展現強烈的本土草根氣質。</p></div>
+  </dialog>
+ 
+  <dialog id="d-metal">
+    <div class="dialog-header"><span class="dialog-title">重金屬/東方金屬</span><button class="dialog-close" onclick="closeDialog('d-metal')">✕</button></div>
+    <div class="dialog-subheader">1988 — 至今</div>
+    <div class="dialog-body"><p>1980年代末隨西方重金屬浪潮進入台灣，樂生排骨、閃靈等樂團發展出融合台灣民俗、原住民元素的東方金屬風格。閃靈更以台灣政治認同為主題，在國際場合引發廣泛關注。</p></div>
+  </dialog>
+ 
+  <dialog id="d-punk">
+    <div class="dialog-header"><span class="dialog-title">龐克/Emo</span><button class="dialog-close" onclick="closeDialog('d-punk')">✕</button></div>
+    <div class="dialog-subheader">1988 — 至今</div>
+    <div class="dialog-body"><p>龐克精神在台灣以地下場景為主要據點，後來與Emo、後硬核等風格交融。代表樂團包括骨肉皮、Sorry Youth（歹勢青春）等，持續在獨立音樂場景中保有活力。</p></div>
+  </dialog>
+ 
+  <dialog id="d-underground">
+    <div class="dialog-header"><span class="dialog-title">地下音樂</span><button class="dialog-close" onclick="closeDialog('d-underground')">✕</button></div>
+    <div class="dialog-subheader">1987 — 2000</div>
+    <div class="dialog-body"><p>解嚴前後，台北的地下場景迅速成形，以女巫店、地下社會等場地為核心。這個時期的地下音樂涵蓋另類搖滾、噪音、實驗等多種風格，孕育了台灣獨立音樂的第一代。</p></div>
+  </dialog>
+ 
+  <dialog id="d-indie-rock">
+    <div class="dialog-header"><span class="dialog-title">獨立搖滾</span><button class="dialog-close" onclick="closeDialog('d-indie-rock')">✕</button></div>
+    <div class="dialog-subheader">2000 — 2020</div>
+    <div class="dialog-body"><p>2000年後獨立音樂場景蓬勃發展，春浪、簡單生活等音樂節提供展演平台。告五人、茄子蛋等樂團在這個時期成形，逐漸跨越地下與主流的界線。</p></div>
+  </dialog>
+ 
+  <dialog id="d-indie-rock2">
+    <div class="dialog-header"><span class="dialog-title">流行/獨立搖滾II</span><button class="dialog-close" onclick="closeDialog('d-indie-rock2')">✕</button></div>
+    <div class="dialog-subheader">2016 — 至今</div>
+    <div class="dialog-body"><p>串流平台崛起後，獨立樂團更容易觸及大眾，獨立與主流的邊界愈趨模糊。這個時期的樂團在保有個人風格的同時，也能進入主流排行榜與商業市場。</p></div>
+  </dialog>
+ 
+  <dialog id="d-hot">
+    <div class="dialog-header"><span class="dialog-title">熱門音樂</span><button class="dialog-close" onclick="closeDialog('d-hot')">✕</button></div>
+    <div class="dialog-subheader">1955 — 1976</div>
+    <div class="dialog-body"><p>承接美國搖滾樂影響，1960年代台灣出現大量翻唱西洋歌曲的「熱門樂隊」。這個時期的音樂多在舞廳、夜總會演出，代表人物包括劉文正早期風格及各電視台樂隊。</p></div>
+  </dialog>
+ 
+  <dialog id="d-pop-rock1">
+    <div class="dialog-header"><span class="dialog-title">流行搖滾I</span><button class="dialog-close" onclick="closeDialog('d-pop-rock1')">✕</button></div>
+    <div class="dialog-subheader">1982 — 1995</div>
+    <div class="dialog-body"><p>羅大佑、李宗盛引領的創作浪潮，將搖滾元素帶入主流華語流行，歌詞開始觸及社會批判與個人情感。這個時期是台灣流行音樂的黃金年代，奠定華語流行樂的美學基礎。</p></div>
+  </dialog>
+ 
+  <dialog id="d-pop-rock2">
+    <div class="dialog-header"><span class="dialog-title">流行搖滾II</span><button class="dialog-close" onclick="closeDialog('d-pop-rock2')">✕</button></div>
+    <div class="dialog-subheader">1999 — 至今</div>
+    <div class="dialog-body"><p>五月天開創的新世代流行搖滾，以青春、夢想為主題，建立起龐大的粉絲基礎。這個時期的流行搖滾更重視現場演出能量與歌迷互動，演唱會文化隨之興盛。</p></div>
+  </dialog>
+ 
+  <dialog id="d-indie-pop">
+    <div class="dialog-header"><span class="dialog-title">獨立流行/樂團流行</span><button class="dialog-close" onclick="closeDialog('d-indie-pop')">✕</button></div>
+    <div class="dialog-subheader">2000 — 至今</div>
+    <div class="dialog-body"><p>樂團形式的流行音樂逐漸成為主流，告五人、草東沒有派對、Leo王等在這個類別中各自發展出鮮明風格，在串流時代獲得跨世代聽眾的廣泛喜愛。</p></div>
+  </dialog>
+ 
+  <dialog id="d-campus">
+    <div class="dialog-header"><span class="dialog-title">校園民歌</span><button class="dialog-close" onclick="closeDialog('d-campus')">✕</button></div>
+    <div class="dialog-subheader">1975 — 1982</div>
+    <div class="dialog-body"><p>1975年「我愛中國」演唱會揭開序幕，大學生以吉他自彈自唱，提倡「唱自己的歌」。這場運動催生了李宗盛、齊豫、蔡琴等人，深刻影響日後台灣流行音樂的創作取向。</p></div>
+  </dialog>
+ 
+  <dialog id="d-post-folk">
+    <div class="dialog-header"><span class="dialog-title">後民歌</span><button class="dialog-close" onclick="closeDialog('d-post-folk')">✕</button></div>
+    <div class="dialog-subheader">1982 — 1990</div>
+    <div class="dialog-body"><p>校園民歌商業化後的延續，風格更加精緻柔和，走向抒情情歌路線。這個時期的創作者開始進入唱片公司體制，奠定台灣流行音樂產業的商業模式。</p></div>
+  </dialog>
+ 
+  <dialog id="d-folk-pop">
+    <div class="dialog-header"><span class="dialog-title">民謠流行</span><button class="dialog-close" onclick="closeDialog('d-folk-pop')">✕</button></div>
+    <div class="dialog-subheader">2000 — 至今</div>
+    <div class="dialog-body"><p>2000年後，以木吉他、真實感為核心的民謠再度復興。陳綺貞、蘇打綠早期風格、最近的盧廣仲等，將民謠美學帶入新世代，並在網路時代找到廣大共鳴。</p></div>
+  </dialog>
+ 
+  <dialog id="d-mando-trad">
+    <div class="dialog-header"><span class="dialog-title">傳統華語流行</span><button class="dialog-close" onclick="closeDialog('d-mando-trad')">✕</button></div>
+    <div class="dialog-subheader">1955 — 1985</div>
+    <div class="dialog-body"><p>源自上海時代曲，隨國民政府遷台後在台灣延續發展。鄧麗君是這個時期最具代表性的歌手，其柔美抒情風格影響整個華語流行音樂圈長達數十年。</p></div>
+  </dialog>
+ 
+  <dialog id="d-chinese-style">
+    <div class="dialog-header"><span class="dialog-title">中國風</span><button class="dialog-close" onclick="closeDialog('d-chinese-style')">✕</button></div>
+    <div class="dialog-subheader">1983 — 2020</div>
+    <div class="dialog-body"><p>融合中國傳統樂器、五聲音階與現代流行編曲，早期以費玉清、鳳飛飛為代表，2000年後周杰倫與方文山的合作將這個風格推向全球華語市場的頂峰。</p></div>
+  </dialog>
+ 
+  <dialog id="d-ballad">
+    <div class="dialog-header"><span class="dialog-title">芭樂流行/成人當代</span><button class="dialog-close" onclick="closeDialog('d-ballad')">✕</button></div>
+    <div class="dialog-subheader">1985 — 2015</div>
+    <div class="dialog-body"><p>以情歌為核心，編曲精緻、旋律朗朗上口，長期主導台灣流行音樂市場。張學友、張惠妹、蔡依林等歌手代表了這個類型在不同年代的高峰。</p></div>
+  </dialog>
+ 
+  <dialog id="d-city-pop">
+    <div class="dialog-header"><span class="dialog-title">城市流行</span><button class="dialog-close" onclick="closeDialog('d-city-pop')">✕</button></div>
+    <div class="dialog-subheader">1990 — 2020</div>
+    <div class="dialog-body"><p>受日本City Pop影響，以都會生活為題材，編曲融入爵士、靈魂樂元素，呈現成熟、洗練的都市感。近年隨City Pop全球復興，台灣同類型作品也受到重新關注。</p></div>
+  </dialog>
+ 
+  <dialog id="d-dance-pop">
+    <div class="dialog-header"><span class="dialog-title">舞曲/電音/嘻哈流行</span><button class="dialog-close" onclick="closeDialog('d-dance-pop')">✕</button></div>
+    <div class="dialog-subheader">1995 — 至今</div>
+    <div class="dialog-body"><p>1990年代後期電音舞曲進入主流，與嘻哈、R&B元素混合，成為台灣偶像工業的主要音樂語言。這個類型催生了台灣練習生文化與造星工業的蓬勃發展。</p></div>
+  </dialog>
+ 
+  <dialog id="d-douyin">
+    <div class="dialog-header"><span class="dialog-title">抖音流行/慢搖</span><button class="dialog-close" onclick="closeDialog('d-douyin')">✕</button></div>
+    <div class="dialog-subheader">2018 — 至今</div>
+    <div class="dialog-body"><p>短影音平台帶動的音樂消費模式，以15秒鉤子旋律、慢搖節奏為特徵。這個現象改變了音樂製作邏輯，也引發關於音樂深度與商業性的廣泛討論。</p></div>
+  </dialog>
+ 
+  <dialog id="d-rnb">
+    <div class="dialog-header"><span class="dialog-title">R&B / 節奏藍調</span><button class="dialog-close" onclick="closeDialog('d-rnb')">✕</button></div>
+    <div class="dialog-subheader">1990 — 至今</div>
+    <div class="dialog-body"><p>1990年代引進台灣，陶喆是最早將R&B本土化的代表人物。後續陳奕迅、王力宏等人持續推進，近年則有許多新生代歌手以R&B為基底，融合trap等當代元素。</p></div>
+  </dialog>
+ 
+  <dialog id="d-reggae">
+    <div class="dialog-header"><span class="dialog-title">斯卡/雷鬼</span><button class="dialog-close" onclick="closeDialog('d-reggae')">✕</button></div>
+    <div class="dialog-subheader">2005 — 至今</div>
+    <div class="dialog-body"><p>牙買加音樂在台灣以小眾形式存在，主要在獨立音樂場景流通。近年部分嘻哈歌手開始引入reggaeton等拉丁元素，使這個系統的影響力有所擴展。</p></div>
+  </dialog>
+ 
+  <dialog id="d-edm">
+    <div class="dialog-header"><span class="dialog-title">電子舞曲</span><button class="dialog-close" onclick="closeDialog('d-edm')">✕</button></div>
+    <div class="dialog-subheader">1990 — 至今</div>
+    <div class="dialog-body"><p>從早期的House、Techno到後來的EDM浪潮，電子舞曲在台灣夜店文化與音樂節場景中持續演化。近年有更多本土製作人在國際電子音樂場景中嶄露頭角。</p></div>
+  </dialog>
+ 
+  <dialog id="d-ambient">
+    <div class="dialog-header"><span class="dialog-title">電子/環境/實驗</span><button class="dialog-close" onclick="closeDialog('d-ambient')">✕</button></div>
+    <div class="dialog-subheader">1995 — 至今</div>
+    <div class="dialog-body"><p>以聲響探索為核心，挑戰傳統音樂結構。台灣有活躍的實驗音樂社群，定期在小型場地舉辦音響藝術展演，並與當代藝術圈緊密連結。</p></div>
+  </dialog>
+ 
+  <dialog id="d-hiphop">
+    <div class="dialog-header"><span class="dialog-title">嘻哈/饒舌</span><button class="dialog-close" onclick="closeDialog('d-hiphop')">✕</button></div>
+    <div class="dialog-subheader">1988 — 至今</div>
+    <div class="dialog-body"><p>從MC Hot Dog、蛋堡的地下時代，到《中華好聲音》後大鳴大放，再到近年《大嘻哈時代》帶來的全民熱潮，台灣嘻哈在三十年間完成從邊緣到主流的完整旅程。</p></div>
+  </dialog>
+ 
+  <dialog id="d-tw-hiphop">
+    <div class="dialog-header"><span class="dialog-title">台式嘻哈</span><button class="dialog-close" onclick="closeDialog('d-tw-hiphop')">✕</button></div>
+    <div class="dialog-subheader">2015 — 至今</div>
+    <div class="dialog-body"><p>以台語、閩南語入嘻哈，融合本土文化符號，代表人物包括頑童MJ116、葛仲珊等。台式嘻哈在保持嘻哈核心精神的同時，發展出鮮明的在地認同與美學風格。</p></div>
+  </dialog>
+ 
+  <dialog id="d-aboriginal">
+    <div class="dialog-header"><span class="dialog-title">原住民音樂</span><button class="dialog-close" onclick="closeDialog('d-aboriginal')">✕</button></div>
+    <div class="dialog-subheader">1980 — 至今</div>
+    <div class="dialog-body"><p>台灣原住民族擁有豐富多元的音樂傳統，近年陸續有原住民音樂人將傳統元素融入現代流行、搖滾與電子音樂。Outlet Drift、桑布伊、以莉·高露等人在保存傳統的同時，也創造出具有當代意義的新聲音。</p></div>
+  </dialog>
+ 
   <script>
     fetch('header.html').then(r => r.text()).then(h => document.getElementById('header-placeholder').innerHTML = h);
     fetch('sidebar.html').then(r => r.text()).then(h => document.getElementById('sidebar-placeholder').innerHTML = h);
-
-    const modal   = document.getElementById('mediaModal');
-    const ytFrame = document.getElementById('ytFrame');
-    const spFrame = document.getElementById('spFrame');
-
-    document.getElementById('openMedia').addEventListener('click', (e) => {
-      e.preventDefault();
-      ytFrame.src = ytFrame.dataset.src;
-      spFrame.src = spFrame.dataset.src;
-      modal.showModal();
-    });
-
-    document.getElementById('mediaClose').addEventListener('click', () => {
-      modal.close();
-      ytFrame.src = '';
-      spFrame.src = '';
-    });
+ 
+    function openDialog(id) { document.getElementById(id).showModal(); }
+    function closeDialog(id) { document.getElementById(id).close(); }
   </script>
-
+ 
 </body>
 </html>
+ 
