@@ -3,8 +3,8 @@
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 :root {
-  --bg:        #333333; /* 80%黑 */
-  --surface:   #161618;
+  --bg:        #1a1a1a; /* 90%黑 */
+  --surface:   #17161a; 
   --border:    #2a2a2e;
   --border-h:  #3a3a40; 
   --text:      #f2f2f2; /* 95%白 */
