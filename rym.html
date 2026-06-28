@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Rate Your Music Top 100 專輯統計 · penguin offline</title>
+  <title>Rate Your Music Top 100 專輯統計 · 離線企鵝</title>
   <link rel="stylesheet" href="style.css" />
   <style>
     html { background: #0f0f10; }
@@ -16,7 +16,7 @@
     <div id="sidebar-placeholder"></div>
     <main>
       <h1>Rate Your Music Top 100 專輯統計</h1>
-      <img src="images/RYM 100.png">
+      <img src="images/RYM 100.png" width="80%">
       <h2>年代</h2>
       最高分的100專輯集中在1960年代下半、1970年代（經典搖滾時期）以及1990年代（另類搖滾與嘻哈興起），1980年代的專輯非常少，因為當時流行的華麗搖滾、舞曲流行都不太合RYM的品味，2020年代僅有兩張專輯，一方面是主流流行樂的全面宰制壓縮了音樂的創新風潮，一方面是RYM用戶（多數樂評人亦然）貴古賤今的結果
 最多專輯上榜的年份是1991年，且同時橫跨另類搖滾、後搖滾、嘻哈、IDM等流派的重要專輯
@@ -38,6 +38,11 @@ Fishermans的是唯一的現場專輯，事實上也是評分本身最高的專�
 
     </main>
   </div>
-  <footer>© 2025 我的網站 · built with ♥</footer>
+  <footer>CC BY-SA 4.0 · 離線企鵝 2026</footer>
 </body>
+  
+<script>
+  fetch('header.html').then(r => r.text()).then(h => document.getElementById('header-placeholder').innerHTML = h);
+  fetch('sidebar.html').then(r => r.text()).then(h => document.getElementById('sidebar-placeholder').innerHTML = h);
+</script>
 </html>
