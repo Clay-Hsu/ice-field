@@ -3,21 +3,27 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>標題</title>
+  <title>標題 · 離線企鵝</title>
   <link rel="stylesheet" href="style.css" />
   <style>
     html { background: #0f0f10; }
   </style>
 </head>
+  
 <body>
-
   <div id="header-placeholder"></div>
   <div class="body-wrap">
     <div id="sidebar-placeholder"></div>
     <main>
-      內容
+      <h1>標題</h1>
+      <p>內容</p>
     </main>
   </div>
-  <footer>© 2025 我的網站 · built with ♥</footer>
+  <footer>CC BY-SA 4.0 · 離線企鵝 2026</footer>
 </body>
+  
+<script>
+  fetch('header.html').then(r => r.text()).then(h => document.getElementById('header-placeholder').innerHTML = h);
+  fetch('sidebar.html').then(r => r.text()).then(h => document.getElementById('sidebar-placeholder').innerHTML = h);
+</script>
 </html>
