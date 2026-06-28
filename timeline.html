@@ -387,13 +387,19 @@
     <div class="dialog-body"><p>台灣原住民族擁有豐富多元的音樂傳統，近年陸續有原住民音樂人將傳統元素融入現代流行、搖滾與電子音樂。Outlet Drift、桑布伊、以莉·高露等人在保存傳統的同時，也創造出具有當代意義的新聲音。</p></div>
   </dialog>
 
-  <script>
-    fetch('header.html').then(r => r.text()).then(h => document.getElementById('header-placeholder').innerHTML = h);
-    fetch('sidebar.html').then(r => r.text()).then(h => document.getElementById('sidebar-placeholder').innerHTML = h);
+<script>
+  fetch('header.html').then(r => r.text()).then(h => document.getElementById('header-placeholder').innerHTML = h);
+  fetch('sidebar.html').then(r => r.text()).then(h => document.getElementById('sidebar-placeholder').innerHTML = h);
 
-    function openDialog(id) { document.getElementById(id).showModal(); }
-    function closeDialog(id) { document.getElementById(id).close(); }
-  </script>
+  function openDialog(id) { document.getElementById(id).showModal(); }
+  function closeDialog(id) { document.getElementById(id).close(); }
 
-</body>
-</html>
+  // 點擊 dialog 外部（backdrop）時關閉
+  document.querySelectorAll('dialog').forEach(dialog => {
+    dialog.addEventListener('click', (e) => {
+      if (e.target === dialog) {
+        dialog.close();
+      }
+    });
+  });
+</script>
