@@ -16,7 +16,7 @@
   --font:      'Noto Serif TC', serif;
   --mono:      'DM Mono', monospace;
 }
-/* ── 標題 ── */
+/*       一 般 設 定 區        */
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font);
   color: var(--text);
@@ -30,8 +30,10 @@ h3 { font-size: 1.25rem; margin-bottom: 0.5rem; font-family: 'Noto Sans TC', san
 h4 { font-size: 1rem;    margin-bottom: 0.5rem; }
 
 p  { margin-bottom: 0.5rem; color: var(--text) }
+p  { text-align: justify; } /* 左右對其測試 */
 html, body { height: 100%; }
 strong { margin-bottom: 0.5rem; color: var(--accent-h) }
+ul { padding-left: 1.5rem; }
 
 body {
   font-family: var(--font);
@@ -48,7 +50,7 @@ body {
 a { color: var(--accent); text-decoration: none; }
 a:hover { color: var(--accent-h); }
 
-/* ── Header ── */
+/*       頭     部        */
 header {
   background: var(--surface);
   border-bottom: 1px solid var(--border);
@@ -85,7 +87,7 @@ header {
 
 .header-nav a:hover { color: var(--text); }
 
-/* ── Body wrapper ── */
+/*       身         體       */
 .body-wrap {
   display: flex;
   flex: 1;
@@ -94,7 +96,7 @@ header {
   gap: 0;
 }
 
-/* ── Nav — 單一垂直線 ── */
+/*   垂     直    線     */
 nav.sidebar {
   flex: 0 0 15%;
   border-right: 1px solid var(--border);
@@ -132,7 +134,7 @@ nav.sidebar {
 .nav-items li a:hover { color: var(--text); }
 .nav-items li a.active { color: var(--accent); }
 
-/* ── Main Content ── */
+/*       main         */
 main {
   flex: 1;
   min-width: 0;
@@ -140,7 +142,7 @@ main {
   margin-right: 15%;
 }
 
-/* ── Dialog ── */
+/*      憨      仔      小      視      窗      */
 dialog {
   position: fixed;
   left: 0;
@@ -255,70 +257,40 @@ dialog[open]::backdrop {
   display: block;
 }
 
-/* ── Cards ── */
-/* 定義炫彩動畫：顏色緩緩流動 */
-@keyframes rainbow-glow {
-  0%   { border-color: #7c9ef5; box-shadow: 0 0 15px rgba(124,158,245,0.3); }
-  50%  { border-color: #d4537e; box-shadow: 0 0 15px rgba(212,83,126,0.3); }
-  100% { border-color: #7c9ef5; box-shadow: 0 0 15px rgba(124,158,245,0.3); }
-}
-
-.card-grid {
-  display: grid;
-  /* auto-fill: 根據寬度自動塞入卡片 */
-  /* 280px: 這是你卡片的固定理想寬度 */
-  grid-template-columns: repeat(auto-fill, 310px); 
-  
-  /* 讓整個網格在畫面中置中 (如果一排不滿四個時) */
-  justify-content: center; 
-  
-  gap: 1.5rem;
-  padding: 2rem 0;
-}
-
+/*        首       頁       小      憨       卡            */
 .card {
-  /* ───── 關鍵尺寸設定 ───── */
-  width: 310px;          /* 固定寬度 */
-  height: 290px;         /* 固定高度 (可依需求調整) */
-  
-  background: var(--surface);
+  width: 310px;
+  height: 290px;
+  background: rgba(255, 255, 255, 0.03);   /* 半透明底,取代純色 var(--surface) */
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
   border: 1px solid var(--border);
   border-radius: 16px;
   padding: 1.5rem;
   text-decoration: none;
   color: var(--text);
-  
-  /* 內部排版：讓內容垂直排列 */
   display: flex;
   flex-direction: column;
-  box-sizing: border-box; /* 確保 padding 不會撐大寬度 */
+  box-sizing: border-box;
   position: relative;
-  transition: transform 0.3s ease;
+  overflow: hidden;
+  transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* Hover 時啟動炫彩動畫 */
-.card {
-  --glow: #7c9ef5; /* 預設色,會被下面覆蓋 */
-  transition: transform 0.3s ease, border-color 0.3s ease;
+/* 玻璃邊緣的頂部高光線 */
+.card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent);
 }
 
-.card.glow-blue   { --glow: #7c9ef5; }
-.card.glow-teal   { --glow: #1D9E75; }
-.card.glow-pink   { --glow: #D4537E; }
-.card.glow-amber  { --glow: #EF9F27; }
-.card.glow-purple { --glow: #7F77DD; }
-
-@keyframes glow-pulse {
-  0%, 100% {
-    box-shadow: 0 0 16px 2px color-mix(in srgb, var(--glow) 35%, transparent),
-                0 0 36px 4px color-mix(in srgb, var(--glow) 15%, transparent);
-  }
-  50% {
-    box-shadow: 0 0 24px 4px color-mix(in srgb, var(--glow) 50%, transparent),
-                0 0 48px 6px color-mix(in srgb, var(--glow) 22%, transparent);
-  }
+.card:hover {
+  transform: translateY(-5px);
+  border-color: var(--border-h);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
 }
-
 .card:hover {
   transform: translateY(-6px);
   border-color: var(--glow);
@@ -339,7 +311,7 @@ dialog[open]::backdrop {
   margin: 0;
 }
 
-/* ── Footer ── */
+/*    腳     部     */
 footer {
   border-top: 1px solid var(--border);
   text-align: center;
