@@ -258,9 +258,17 @@ dialog[open]::backdrop {
 }
 
 /*        首       頁       小      憨       卡            */
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 300px);
+  gap: 1.5rem;
+  justify-content: center;   /* 卡片群組整體置中 */
+  padding: 2rem 0;
+}
+
 .card {
-  width: 310px;
-  height: 290px;
+  width: 300px;
+  height: 300px;
   background: rgba(255, 255, 255, 0.03);   /* 半透明底,取代純色 var(--surface) */
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
@@ -290,11 +298,6 @@ dialog[open]::backdrop {
   transform: translateY(-5px);
   border-color: var(--border-h);
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-}
-.card:hover {
-  transform: translateY(-6px);
-  border-color: var(--glow);
-  animation: glow-pulse 2.2s ease-in-out infinite;
 }
 
 .card-title {
@@ -327,6 +330,21 @@ footer {
   main { padding-left: 1rem; margin-right: 0; }
   .body-wrap { padding: 1.25rem 0; }
   dialog { width: 85vw; }
+}
+
+/* 卡片格線：平板兩欄 */
+@media (max-width: 1024px) {
+  .card-grid {
+    grid-template-columns: repeat(2, 300px);
+  }
+}
+
+/* 卡片格線：手機一欄，並置中 */
+@media (max-width: 680px) {
+  .card-grid {
+    grid-template-columns: 1fr;
+    justify-items: center;
+  }
 }
 
 @media (max-width: 480px) {
