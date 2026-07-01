@@ -296,8 +296,9 @@ dialog[open]::backdrop {
 
 .card:hover {
   transform: translateY(-5px);
-  border-color: var(--border-h);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  border-color: var(--accent-h);
+  box-shadow: 0 10px 30px rgba(53, 118, 204, 0.35), 
+              0 0 20px rgba(51, 199, 204, 0.15);
 }
 
 .card-title {
@@ -419,6 +420,11 @@ main.no-sidebar .card-grid {
 @media (max-width: 480px) {
   .header-nav { display: none; }
   .hamburger  { display: flex; }
+}
+
+.home-intro {
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 /* icon */
