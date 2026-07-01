@@ -3,28 +3,42 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>時間軸</title>
+  <title>關於 · 離線企鵝</title>
+  <link rel="stylesheet" href="https://cloudflare.com">
   <link rel="stylesheet" href="style.css" />
-  <style>html { background: #0f0f10; }</style>
+  <style>
+    html { background: #0f0f10; }
+  </style>
 </head>
+  
 <body>
-
   <div id="header-placeholder"></div>
-
   <div class="body-wrap">
     <div id="sidebar-placeholder"></div>
-
     <main>
       <h1>關於</h1>
-
+      <h3>PENGUIN OFFLINE MUSIC ARCHIVE</h3>
+      <p>嗨嗨我是離線企鵝，這是我建立的音樂介紹網站</p>
+      <div class="social-icons">
+  <a href="https://instagram.com" target="_blank">
+    <img src="images/instagram.svg" alt="Instagram" class="icon-img">
+  </a>
+  <a href="https://youtube.com" target="_blank">
+    <img src="images/youtube.svg" alt="YouTube" class="icon-img">
+  </a>
+  <a href="https://threads.net" target="_blank">
+    <img src="images/threads.svg" alt="Threads" class="icon-img">
+  </a>
+</div>
     </main>
   </div>
+  <footer>CC BY-SA 4.0 · 離線企鵝 2026</footer>
+</body>
   
   <script>
     fetch('header.html').then(r => r.text()).then(h => document.getElementById('header-placeholder').innerHTML = h);
     fetch('sidebar.html').then(r => r.text()).then(h => document.getElementById('sidebar-placeholder').innerHTML = h);
   </script>
-  <footer>© 2025 我的網站 · built with ♥</footer>
 
 </body>
 </html>
