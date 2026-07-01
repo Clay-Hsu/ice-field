@@ -25,12 +25,11 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 h1 { font-size: 2rem;    margin-bottom: 1rem; margin-top: 0.5rem}
-h2 { font-size: 1.5rem;  margin-bottom: 0.75rem; margin-top: 0.25rem; color: var(--secondary)}
+h2 { font-size: 1.5rem;  margin-bottom: 0.75rem; margin-top: 0.5rem;}
 h3 { font-size: 1.25rem; margin-bottom: 0.5rem; font-family: 'Noto Sans TC', sans;}
 h4 { font-size: 1rem;    margin-bottom: 0.5rem; }
 
 p  { margin-bottom: 0.5rem; color: var(--text) }
-
 html, body { height: 100%; }
 
 body {
@@ -42,6 +41,7 @@ body {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+  text-autospace: ideograph-alpha ideograph-numeric; /*字元尖閣*/
 }
 
 a { color: var(--accent); text-decoration: none; }
@@ -63,7 +63,7 @@ header {
 
 .logo {
   font-family: var(--mono);
-  font-size: 18px;
+  font-size: 24px;
   font-weight: 500;
   color: var(--text);
 }
